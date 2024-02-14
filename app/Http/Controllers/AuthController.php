@@ -8,10 +8,6 @@ use App\Models\User; // Import the User model
 class AuthController extends Controller
 {
     // Show signup form
-    public function showSignupForm()
-    {
-        return view('signup');
-    }
 
     // Handle signup form submission
     public function signup(Request $request)

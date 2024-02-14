@@ -15,27 +15,27 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return view('home');
+})->name('home')->middleware('auth');
 
 Route::get('/login', function () {
     return view('login');
-})->name('login');
+})->name('login')->middleware('guest');
 
 Route::get('/signup', function () {
     return view('signup');
-})->name('signup');
+})->name('signup')->middleware('guest');
 
 //Route::post('/login', function () {
 //    return view('login');
 //});
 
 
-Route::post('/login', [UserController::class, 'login']);
-//Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/login', [UserController::class, 'login'])->middleware('guest');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 use App\Http\Controllers\AuthController;
 
 //Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');
-Route::post('/signup', [AuthController::class, 'signup']);
+Route::post('/signup', [UserController::class, 'signup'])->middleware('guest');
 

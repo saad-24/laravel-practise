@@ -35,6 +35,12 @@
         <button type="submit">Login</button>
     </div>
 </form>
+<form method="GET" action="{{ route('signup') }}">
+    @csrf
+    <div>
+        <button type="submit">Signup</button>
+    </div>
+</form>
 </body>
 </html>
 
