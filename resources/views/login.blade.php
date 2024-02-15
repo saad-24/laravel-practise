@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+@extends('layout.app')
+
+@section('content')
 <h2>Login</h2>
 
 @if ($errors->any())
@@ -41,6 +36,4 @@
         <button type="submit">Signup</button>
     </div>
 </form>
-</body>
-</html>
-
+@endsection

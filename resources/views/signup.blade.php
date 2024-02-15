@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-</head>
-<body>
+@extends('layout.app')
+
+@section('content')
 <h2>Signup</h2>
 
 <!-- Form for signup -->
@@ -31,5 +26,4 @@
         <button type="submit">Signup</button>
     </div>
 </form>
-</body>
-</html>
+@endsection
