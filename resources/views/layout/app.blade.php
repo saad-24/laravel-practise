@@ -1,38 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="{{ asset('/css/lightbox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/css/responsive.css') }}" />
+
+    <title>Crowd</title>
 </head>
-<body>
+
+<body class="homeBody">
+
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="top-para">
+                        <p>As seen in TIME Magazine, Crowd is democratizing real estate! <a href="javascript:;">Read
+                                More</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
+    <div class="header-last">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navigation">
+                        <nav class="navbar navbar-expand-lg navbar-light ">
+                            <a class="navbar-brand" href="#"><img src="{{ asset('/images/logo.png') }}" class="img-fluid"
+                                                                  alt=""></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                <ul class="navbar-nav mx-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{{ route('crowd.property') }}">Properties</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ asset('resources/views/crowd/about.blade.php') }}">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ asset('resources/views/crowd/golden-visa.blade.php') }}">Golden Visa</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Sell
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="#">Lorem Ipsum</a>
+                                            <a class="dropdown-item" href="#">Lorem Ipsum</a>
+                                            <a class="dropdown-item" href="#">Lorem Ipsum</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Learn
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="#">Lorem Ipsum</a>
+                                            <a class="dropdown-item" href="#">Lorem Ipsum</a>
+                                            <a class="dropdown-item" href="#">Lorem Ipsum</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <ul class="lang">
+                            <li><a href="javascript:;"><i class="fal fa-globe"></i> EN</a></li>
+                        </ul>
+                        <div class="head-btn">
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf <!-- CSRF Token -->
+                                    <button class="headBtn" type="submit">Logout</button>
+                                </form>
+                            @else
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf <!-- CSRF Token -->
+                                    <button class="headBtn" type="submit">Login</button>
+                                </form>
+                            @endauth
+                            <a href="javascript:;" class="themeBtn">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 
-<main>
-    @yield('content')
-</main>
+
+@yield('content')
+
 
 <footer>
     <div class="container">
@@ -74,8 +153,8 @@
             <div class="col-md-3">
 
                 <div class="applatform">
-                    <img src="assets/images/playstore.png" class="img-fluid" alt=""><br>
-                    <img src="assets/images/apstore.png" class="img-fluid" alt="">
+                    <img src="{{ asset('public/images/playstore.png') }}" class="img-fluid" alt=""><br>
+                    <img src="{{ asset('public/images/apstore.png') }}" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
@@ -102,14 +181,26 @@
 
                 <div class="applatform">
                     <a href="javascript:;">
-                        <img src="assets/images/footLogo.png" class="img-fluid" alt="">
+                        <img src="{{ asset('public/images/footLogo.png') }}" class="img-fluid" alt="">
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="{{ asset('public/js/app.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap%404.6.1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="{{ asset('public/js/wow.min.js') }}"></script>
+<script src="{{ asset('public/js/lightbox.js') }}"></script>
+<script src="{{ asset('public/js/function.js') }}"></script>
 </body>
+
 </html>

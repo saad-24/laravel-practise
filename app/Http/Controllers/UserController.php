@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,10 @@ class UserController extends Controller
     // Handle login form submission
     public function login(Request $request)
     {
+
+
         // Validate login credentials
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -41,7 +45,9 @@ class UserController extends Controller
         // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
             // Authentication successful
-            return redirect()->intended('/'); // Redirect to dashboard or any other page
+//            $properties = Property::all();
+////            return view('crowd.index', compact('properties'));
+            return redirect()->route('crowd');
         } else {
             // Authentication failed
             return redirect()->back()->withInput($request->only('email'))->withErrors([
@@ -55,5 +61,12 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+
+    public function userProperties()
+    {
+        $properties = Property::all(); // Fetch all properties
+
+        return view('crowd.index', compact('properties'));
     }
 }
