@@ -7,7 +7,7 @@ class PropertyDetailController extends Controller
 {
     public function show($id)
     {
-        $property = Property::find($id);
+        $property = Property::with('images')->find($id);
         if (!$property) {
             abort(404); // Or any other appropriate action
         }

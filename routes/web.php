@@ -67,6 +67,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/property', function () {
         return view('admin.dashboard');
     });
+    Route::get('/admin/properties', [AdminPropertyController::class, 'dashboard'])->name('admin.property.dashboard');
 });
 
 Route::get('/crowd-properties', function () {
