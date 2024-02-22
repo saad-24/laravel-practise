@@ -17,4 +17,14 @@
         @endphp
         AED {{ number_format($available) }} Available
     </h6>
+    <h6>
+        Total Investors: {{ \App\Models\Investment::where('property_id', $property->id)->distinct()->count('user_id') }}
+    </h6>
+    @if(Auth::check() && !Auth::user()->is_admin)
+        <form action="{{ route('properties.pay', $property) }}" method="post">
+            @csrf
+            <input type="number" name="amount" placeholder="Enter amount">
+            <button type="submit">Pay</button>
+        </form>
+    @endif
 @endsection

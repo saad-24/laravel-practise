@@ -443,13 +443,7 @@
                                 <span>total ROI</span>
                             </li>
                         </ul>
-                        @if(Auth::check() && !Auth::user()->is_admin)
-                            <form action="{{ route('properties.pay', $property) }}" method="post">
-                                @csrf
-                                <input type="number" name="amount" placeholder="Enter amount">
-                                <button type="submit">Pay</button>
-                            </form>
-                        @endif
+
                     </div>
                 </div>
             </div>

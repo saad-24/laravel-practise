@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
+use App\Models\Investment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -14,7 +16,12 @@ class PaymentController extends Controller
         ]);
 
         $property->increment('total_investment', $validatedData['amount']);
-
+        // Create a new investment record
+        $investment = new Investment();
+        $investment->user_id = Auth::id(); // Current authenticated user ID
+        $investment->property_id = $property->id;
+        $investment->investment_amount = $validatedData['amount'];
+        $investment->save();
         return redirect()->route('crowd')->with('success', 'Payment successful!');
     }
 }
