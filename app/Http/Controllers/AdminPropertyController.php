@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use App\Models\Property;
 use App\Models\PropertyImage;
+use App\Models\Funded;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AdminPropertyController extends Controller
 {
@@ -40,4 +40,41 @@ class AdminPropertyController extends Controller
         $properties = Property::all();
         return view('admin.properties', compact('properties'));
     }
+    public function edit(Property $property)
+    {
+        return view('admin.edit', compact('property'));
+    }
+
+    public function update(Request $request, Property $property)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+        ]);
+
+        $property->update($validatedData);
+
+        return redirect()->route('admin.property.dashboard')->with('success', 'Property updated successfully!');
+    }
+
+    public function destroy(Property $property)
+    {
+        $property->delete();
+
+        return redirect()->route('admin.property.dashboard')->with('success', 'Property deleted successfully!');
+    }
+
+    public function moveToFunded(Property $property)
+    {
+        Funded::create([
+            'name' => $property->name,
+            'price' => $property->price,
+            'total_investment' => $property->total_investment,
+        ]);
+
+        $property->delete();
+
+        return redirect()->route('all.properties')->with('success', 'Property moved to Funded successfully!');
+    }
+
 }

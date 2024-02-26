@@ -31,4 +31,19 @@
             <button type="submit">Pay</button>
         </form>
     @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(Auth::check() && Auth::user()->is_admin)
+    <form action="{{ route('properties.move-to-funded', $property) }}" method="post">
+        @csrf
+        <button type="submit">Move to Funded</button>
+    </form>
+    @endif
 @endsection

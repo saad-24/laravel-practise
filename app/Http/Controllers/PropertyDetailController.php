@@ -9,10 +9,11 @@ class PropertyDetailController extends Controller
     {
         $property = Property::with('images')->find($id);
         if (!$property) {
-            abort(404); // Or any other appropriate action
+            abort(404);
         }
 
         $investment = Investment::find($id);
-        return view('crowd.property_detail', compact('property','investment'));
+        return view('crowd.properties-detail', compact('property','investment'));
     }
+
 }

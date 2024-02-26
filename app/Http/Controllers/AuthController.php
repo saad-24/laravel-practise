@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User; // Import the User model
+use App\Models\User;
 
 class AuthController extends Controller
 {
-    // Show signup form
-
-    // Handle signup form submission
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function signup(Request $request)
     {
         // Validate input

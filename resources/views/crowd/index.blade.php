@@ -447,77 +447,13 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="col-md-4">--}}
-{{--                <div class="howCard howCardNew">--}}
-{{--                    <div class="hwcHead">--}}
-{{--                        <figure>--}}
-{{--                            <img src="{{ asset('/images/mon-2.png') }}" class="img-fluid w-100" alt="">--}}
-{{--                        </figure>--}}
-{{--                    </div>--}}
-{{--                    <div class="hwcBody">--}}
-{{--                        <h2>1 Bedroom in Burj Khalifa</h2>--}}
-{{--                        <div class="downCard">--}}
-{{--                            <h5><i class="far fa-map-marker-alt"></i> Downtown</h5>--}}
-{{--                            <h6>--}}
-{{--                                <figure><img src="{{ asset('/images/prog.png') }}" class="img-fluid" alt=""></figure> 85% Sold--}}
-{{--                            </h6>--}}
-{{--                        </div>--}}
-{{--                        <ul>--}}
-{{--                            <li>--}}
-{{--                                <p>9%</p>--}}
-{{--                                <span>gross yield</span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <p>31%</p>--}}
-{{--                                <span>capital appreciation</span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <p>52%</p>--}}
-{{--                                <span>total ROI</span>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-4">--}}
-{{--                <div class="howCard howCardNew">--}}
-{{--                    <div class="hwcHead">--}}
-{{--                        <figure>--}}
-{{--                            <img src="{{ asset('/images/mon-3.png') }}" class="img-fluid w-100" alt="">--}}
-{{--                        </figure>--}}
-{{--                    </div>--}}
-{{--                    <div class="hwcBody">--}}
-{{--                        <h2>1 Bedroom in Burj Khalifa</h2>--}}
-{{--                        <div class="downCard">--}}
-{{--                            <h5><i class="far fa-map-marker-alt"></i> Downtown</h5>--}}
-{{--                            <h6>--}}
-{{--                                <figure><img src="{{ asset('/images/prog.png') }}" class="img-fluid" alt=""></figure> 85% Sold--}}
-{{--                            </h6>--}}
-{{--                        </div>--}}
-{{--                        <ul>--}}
-{{--                            <li>--}}
-{{--                                <p>9%</p>--}}
-{{--                                <span>gross yield</span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <p>31%</p>--}}
-{{--                                <span>capital appreciation</span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <p>52%</p>--}}
-{{--                                <span>total ROI</span>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
             @endforeach
         </div>
 
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="fundBtn">
-                    <a href="javascript:;" class="themeBtn">View All Properties</a>
+                    <a href="{{ route('front.properties') }}" class="themeBtn">View All Properties</a>
                 </div>
             </div>
         </div>

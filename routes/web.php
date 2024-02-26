@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminPropertyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PropertyController;
-use App\Models\Property;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\PropertyDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,77 +18,32 @@ use App\Models\Property;
 |
 */
 
-//Route::get('/', function () {
-//    return view('crowd.index');
-//})->name('crowd')->middleware('auth');
 
-//Route::get('/', function () {
-//})->name('crowd')->middleware('auth');
+Route::middleware('guest')->group(function () {
+    // Guest routes here
+    Route::post('/signup', [UserController::class, 'signup'])->middleware('guest');
+    Route::post('/login', [UserController::class, 'login'])->middleware('guest');
+    Route::get('/signup', [FrontController::class, 'Signup'])->name('signup');
+    Route::get('/login', [FrontController::class, 'Login'])->name('login');
+});
 
-Route::any('/', [UserController::class, 'userProperties'])->name('crowd')->middleware('auth');
-
-use App\Http\Controllers\PropertyDetailController;
-
-Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])
-    ->name('property_detail')
-    ->middleware('auth');
-
-Route::get('/login', function () {
-    return view('login');
-})->name('login')->middleware('guest');
-
-Route::get('/signup', function () {
-    return view('crowd.registration');
-})->name('signup')->middleware('guest');
-
-
-
-
-Route::post('/login', [UserController::class, 'login'])->middleware('guest');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-
-Route::post('/signup', [UserController::class, 'signup'])->middleware('guest');
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
-//Route::post('/properties/{property}', function () {
-//    return view('properties.payment');
-//})->name('make_payment')->middleware('auth');
-
-Route::post('/properties/{property}/pay', [PaymentController::class, 'pay'])->name('properties.pay');
-
-
+Route::middleware('auth')->group(function () {
+    // Auth routes here
+    Route::any('/', [UserController::class, 'userProperties'])->name('crowd');
+    Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])->name('property_detail');
+    Route::post('/properties/{property}/pay', [PaymentController::class, 'pay'])->name('properties.pay');
+    Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+});
 
 Route::middleware('admin')->group(function () {
     // Admin routes here
     Route::post('/admin/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
-    Route::get('/admin/property', function () {
-        return view('admin.dashboard');
-    });
+    Route::get('/admin/property', [FrontController::class, 'AdminDashboard']);
     Route::get('/admin/properties', [AdminPropertyController::class, 'dashboard'])->name('admin.property.dashboard');
+    Route::get('/admin/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
+    Route::put('/admin/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');
+    Route::delete('/admin/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
+    Route::post('/admin/properties/{property}/move-to-funded', [AdminPropertyController::class, 'moveToFunded'])->name('properties.move-to-funded');
 });
-
-Route::get('/crowd-properties', function () {
-    return view('crowd.properties');
-})->name('crowd.property')->middleware('auth');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

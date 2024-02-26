@@ -1088,3 +1088,572 @@ h3.subtitle {
   gap: 20px;
 }
 /* golden visa page end */
+
+/* registration page */
+.regBody footer {
+  display: none;
+}
+.registBanner {
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #f3f3f3;
+}
+.registCont img {
+  height: 953px;
+}
+.registForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+/* registration page end */
+
+/* step form start */
+#msform {
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
+  background: transparent !important;
+}
+
+#msform fieldset {
+  background: transparent;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-card {
+  text-align: left;
+}
+
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+
+#msform input,
+#msform textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  margin-top: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2c3e50;
+  background-color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+#msform input:focus,
+#msform textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid var(--secondary);
+  outline-width: 0;
+}
+#msform .themeBtn {
+  width: 150px;
+  color: white;
+}
+#msform .themeBtn {
+  width: 100%;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 20px 0px 10px 5px;
+  float: right;
+  height: 45px;
+  line-height: 1;
+}
+
+#msform .themeBtn:hover,
+#msform .themeBtn:focus {
+  background-color: #311b92;
+}
+
+#msform .themeBtn-previous {
+  width: 100px;
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px 10px 0px;
+  float: right;
+}
+
+#msform .themeBtn-previous:hover,
+#msform .themeBtn-previous:focus {
+  background-color: #000000;
+}
+
+.card {
+  z-index: 0;
+  border: none;
+  position: relative;
+  background: transparent !important;
+}
+
+.fs-title {
+  font-size: 25px;
+  color: #673ab7;
+  margin-bottom: 15px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.purple-text {
+  color: #673ab7;
+  font-weight: normal;
+}
+
+.steps {
+  font-size: 1rem;
+  color: gray;
+  margin-top: 40px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: none;
+}
+
+.fieldlabels {
+  color: gray;
+  text-align: left;
+  padding-left: 10px;
+}
+
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: lightgrey;
+}
+
+#progressbar .active {
+  color: #673ab7;
+}
+
+#progressbar li {
+  list-style-type: none;
+  font-size: 15px;
+  width: 25%;
+  float: left;
+  position: relative;
+  font-weight: 400;
+}
+
+#progressbar #account:before {
+  font-family: FontAwesome;
+  content: "\f13e";
+}
+
+#progressbar #personal:before {
+  font-family: FontAwesome;
+  content: "\f007";
+}
+
+#progressbar #payment:before {
+  font-family: FontAwesome;
+  content: "\f030";
+}
+
+#progressbar #confirm:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+
+#progressbar li:before {
+  width: 50px;
+  height: 50px;
+  line-height: 45px;
+  display: block;
+  font-size: 20px;
+  color: #ffffff;
+  background: lightgray;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+  padding: 2px;
+}
+
+#progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: lightgray;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  z-index: -1;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #673ab7;
+}
+
+.progress {
+  height: 12px;
+  border-radius: 100px;
+}
+
+.progress-bar {
+  background-color: var(--secondary);
+}
+
+.fit-image {
+  width: 100%;
+  object-fit: cover;
+}
+input.email-Input {
+  margin: 0 0 5px 0 !important;
+}
+.smallForm {
+  color: #7d7c7c;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+.steps span {
+  font-weight: 800;
+  color: var(--secondary);
+}
+.disNone {
+  display: none;
+}
+ul.passList {
+  list-style: disc;
+  padding-left: 1.75rem;
+  margin: 10px 0;
+}
+ul.passList li {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+.iti__selected-flag {
+  background-color: #bbb;
+  border-radius: 10px 0 0 10px;
+}
+.phonePadding {
+  padding-left: 4rem !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  width: 530px !important;
+}
+.calForm input.form-check-input {
+  height: unset !important;
+  margin: 0 4px;
+}
+
+.calFormInn input {
+  height: unset;
+  margin: 0;
+}
+
+.calForm.calFormInn label {
+  margin: 0;
+}
+.calformLabel h4 {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.invReturn:before {
+  content: "";
+  height: 16px;
+  width: 16px;
+  background-color: var(--secondary);
+  position: absolute;
+  left: 16px;
+  border-radius: 50%;
+}
+
+.invReturn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin: 1rem 0;
+}
+.invReturn h5 {
+  color: #a2a2a2;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.invReturn h6 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.invst-project .row .col-md-4:nth-child(2) .invReturn:before {
+  left: 0 !important;
+}
+
+.regCard {
+  padding: 0 8rem;
+}
+.aedForm h4 {
+  color: #616161;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.aedForm h2 {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.iti.iti--allow-dropdown {
+  margin: 20px 0;
+}
+
+.aedForm {
+  background: white;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 40px 0;
+  border-radius: 15px;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.aedForm ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+.aedForm img {
+  width: 60%;
+}
+
+.aedForm figure {
+  text-align: center;
+}
+/* step form end */
+
+/* properties details start */
+
+.prop-det-cont h2 {
+  font-size: 2.5rem;
+  color: black;
+  font-weight: 800;
+  text-transform: none;
+}
+
+.anim-list {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 1.25rem;
+}
+
+.anim-list li + li span:after {
+  content: "";
+  height: 100%;
+  width: 1px;
+  background: black;
+  position: absolute;
+  left: -10px;
+  top: 0;
+}
+
+.anim-list li {
+  padding: 0 10px;
+}
+.anim-list li span {
+  position: relative;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.icon-list li:first-child {
+  flex: 0 0 5%;
+}
+
+.icon-list li svg {
+  width: 100%;
+}
+
+.icon-list li:first-child svg {
+  width: 100% !important;
+}
+
+.icon-list li span:first-child {
+  flex: 0 0 5%;
+}
+
+.icon-list h4 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.icon-list {
+  margin-top: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1rem 0 2rem;
+}
+.newHeading {
+  font-size: 1.75rem !important;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.calForm.calFormInn.calPropDet {
+  box-shadow: none;
+  background: white;
+  padding: 0;
+}
+.defaul-prop {
+  background: #ebebeb;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 8px;
+  color: #656565;
+  margin: 1rem 0;
+}
+.overview p {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+
+.overview {
+  margin: 2rem 0 1rem;
+}
+
+.financial-timline p {
+  font-size: 14px;
+  background: #ebebeb;
+  padding: 6px 20px;
+  width: max-content;
+  border-radius: 10px;
+}
+
+.ft-list li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.ft-list li h6 {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.ft-list li h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.ft-list li p {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+.ft-list li i {
+  color: var(--secondary);
+}
+.financial-timline {
+  padding: 1rem 0;
+}
+.location a {
+  color: var(--secondary);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 16px;
+}
+.location iframe {
+  margin: 20px 0;
+}
+.location {
+  margin: 3rem 0;
+}
+.amenities ul {
+  display: flex;
+  align-items: center;
+  gap: 160px;
+  margin: 20px 20px;
+}
+
+.amenities ul li {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.amenities {
+  margin: 5rem 0;
+}
+
+.documents ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: black;
+  background: white;
+  padding: 13px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+.documents ul li {
+  padding: 5px 0;
+}
+.documents ul li a i {
+  color: var(--secondary);
+}
+.documents ul li a span {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.documents ul li a:hover {
+  border-color: var(--secondary);
+  background: #e8e8e8;
+}
+.documents {
+  margin: 0 0 5rem;
+}
+.questions ul li {
+  display: flex;
+  gap: 20px;
+}
+.questions ul li span:first-child {
+  flex: 0 0 12%;
+}
+.questions ul li p {
+  margin: 0 0 10px;
+}
+section.prop-detail-sect {
+  background: #f7f7f7;
+}
+/* properties details end */

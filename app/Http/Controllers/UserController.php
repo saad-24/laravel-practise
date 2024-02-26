@@ -69,4 +69,6 @@ class UserController extends Controller
 
         return view('crowd.index', compact('properties'));
     }
+
+
 }
