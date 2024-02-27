@@ -1,16 +1,21 @@
-@extends('layout.app')
+@extends('layout.main')
 
 @section('content')
-    <section class="propBanner">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-7">
-                    <div class="banCont propCont">
-                        <h2>Properties</h2>
-                        <p>With over 20 years of experience leading major real estate companies in Dubai, we utilize our
-                            expertise and network to find properties with the greatest investment potential for you.</p>
+@include('layout.dashboard-left')
+    <section class="prop-detail-banner">
+        <div class="container-fluid">
+            <div class="row">
+                @foreach ($property->images as $image)
+                <div class="col-md-6">
+                    <div class="prop-det-cont">
+                        <div class="first-image">
+                            <figure>
+                                <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid w-100" alt="Property Image">
+                            </figure>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -21,7 +26,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="prop-det-cont">
-                        <h2>1 Bedroom in Burj Khalifa</h2>
+                        <h2>{{ $property->name }}</h2>
                         <ul class="anim-list">
                             <li><span>1 bed</span></li>
                             <li><span>2 bath</span></li>

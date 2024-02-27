@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <link rel="stylesheet" href="{{ asset('/css/lightbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
@@ -55,10 +56,10 @@
                                         <a class="nav-link" href="{{ route('front.properties') }}">Properties</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ asset('resources/views/crowd/about.blade.php') }}">About</a>
+                                        <a class="nav-link" href="{{ route('crowd.about') }}">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ asset('resources/views/crowd/golden-visa.blade.php') }}">Golden Visa</a>
+                                        <a class="nav-link" href="{{ route('crowd.golden_visa') }}">Golden Visa</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -112,7 +113,7 @@
 
 @yield('content')
 
-<section class="contact-sect">
+{{-- <section class="contact-sect">
     <img src="assets/images/cntImg.png" class="img-fluid cntImg" alt="">
     <div class="container">
         <div class="row">
@@ -153,7 +154,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <footer>
     <div class="container">
         <div class="row justify-content-between">

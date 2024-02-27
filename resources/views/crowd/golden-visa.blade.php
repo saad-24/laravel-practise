@@ -1,7 +1,6 @@
-<?php include __DIR__ . '/include/header.blade.php' ?>
+@extends('layout.app')
 
-<?php include __DIR__ . '/include/menu.blade.php'?>
-
+@section('content')
 <section class="aboutBanner">
     <img src="/public/images/about-elm.png" class="img-fluid about-elm" alt="">
     <div class="container">
@@ -320,7 +319,4 @@
     </div>
 </section>
 
-
-
-<?php include __DIR__ . '/include/contact-section.blade.php'?>
-<?php include __DIR__ . '/include/footer.blade.php' ?>
+@endsection

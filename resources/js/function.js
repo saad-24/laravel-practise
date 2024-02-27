@@ -103,15 +103,29 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $(".test-slider").slick({
+  $(".logo-slider").slick({
     autoplay: true,
-    dots: true,
+    dots: false,
     infinite: true,
     autoplaySpeed: 1000,
     speed: 3000,
-    slidesToShow: 2,
+    slidesToShow: 6,
     slidesToScroll: 1,
     arrows: false,
+  });
+});
+
+$(document).ready(function () {
+  $(".blog-slider").slick({
+    autoplay: false,
+    dots: false,
+    infinite: true,
+    autoplaySpeed: 1000,
+    speed: 3000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: ".blgLeft",
+    nextArrow: ".blgRight",
   });
 });
 // graph start

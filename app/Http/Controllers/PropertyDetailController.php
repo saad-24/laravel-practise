@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Property;
 use App\Models\Investment;
+use Illuminate\Support\Facades\Auth;
 class PropertyDetailController extends Controller
+
 {
     public function show($id)
     {

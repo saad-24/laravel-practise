@@ -1,19 +1,7 @@
-@extends('layout.app')
+@extends('layout.main')
 
 @section('content')
-<section class="propBanner">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-md-7">
-                <div class="banCont propCont">
-                    <h2>Properties</h2>
-                    <p>With over 20 years of experience leading major real estate companies in Dubai, we utilize our
-                        expertise and network to find properties with the greatest investment potential for you.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@include('layout.dashboard-left')
 
 <section class="prop-tab-section">
     <div class="container">
@@ -51,6 +39,7 @@
                                     <div class="howCard howCardNew">
                                         <div class="hwcHead">
                                             <h2>Luxury Properties</h2>
+                                            {{-- @dd($property->images) --}}
                                             @foreach ($property->images->take(1) as $image)
                                                 <figure>
                                                     <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid w-100" alt="Property Image">
@@ -154,7 +143,7 @@
                                             <div class="downCard">
                                                 <h5><i class="far fa-map-marker-alt"></i> Downtown</h5>
                                                 <h6>
-                                                    <figure><img src="/public/images/prog.png" class="img-fluid" alt="">
+                                                    <figure><img src="{{ asset('public/images/prog.png')}}" class="img-fluid" alt="">
                                                     </figure> 85% Sold
                                                 </h6>
                                             </div>

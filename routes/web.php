@@ -33,6 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])->name('property_detail');
     Route::post('/properties/{property}/pay', [PaymentController::class, 'pay'])->name('properties.pay');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
+    Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
+    Route::get('/portfolio', [FrontController::class, 'Portfolio'])->name('crowd.portfolio');
+    Route::get('/cart', [FrontController::class, 'Cart'])->name('crowd.cart');
+    Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
+    Route::get('/about', [FrontController::class, 'About'])->name('crowd.about');
+    Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
