@@ -95,7 +95,7 @@
                                                                     alt="">
                                                                 <h5>Number of
                                                                     properties</h5>
-                                                                <p>0%</p>
+                                                                <p>{{$properties->count()}} %</p>
                                                             </div>
                                                         </div>
 
@@ -161,9 +161,19 @@
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
-                                                        <!-- <tbody>
-                                                            <tr></tr>
-                                                        </tbody> -->
+                                                        <tbody>
+                                                            @foreach($properties as $property)
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $property->name }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $property->investments->sum('investment_amount') }}
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                            @endforeach
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>

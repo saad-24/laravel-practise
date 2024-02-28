@@ -17,6 +17,18 @@
                 <label for="images">Images:</label>
                 <input type="file" id="images" name="images[]" accept="image/*" multiple required>
             </div>
+            <div>
+                <label for="price">Bed:</label>
+                <input type="text" id="bed" name="bed" required>
+            </div>
+            <div>
+                <label for="price">Bath:</label>
+                <input type="text" id="bath" name="bath" required>
+            </div>
+            <div>
+                <label for="price">Area:</label>
+                <input type="text" id="area" name="area" required>
+            </div>
             <button type="submit">Save Property</button>
         </form>
     </div>

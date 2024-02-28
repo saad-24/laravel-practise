@@ -17,23 +17,43 @@ class AdminPropertyController extends Controller
             'price' => 'required|numeric',
 //            'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bed' => 'required|integer',
+            'bath' => 'required|integer',
+            'area' => 'required|numeric',
         ]);
-
+        // dd($validatedData);
+        $msg=null;
         // Create a new property record
         $property = Property::create([
             'name' => $validatedData['name'],
             'price' => $validatedData['price'],
+            'bed' => $validatedData['bed'],
+            'bath' => $validatedData['bath'],
+            'area' => $validatedData['area'],
         ]);
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $path = $image->store('property_images', 'public');
-                Log::info('Image stored at: ' . $path);
-                $property->images()->create(['image_path' => $path]);
-            }
+        // dd($property);
+        if($property){
+            $msg = "Property added successfully";
         }
-
+        
+        // if ($request->hasFile('images')) {
+        //     foreach ($request->file('images') as $image) {
+        //         $path = $image->store('property_images', 'public');
+        //         Log::info('Image stored at: ' . $path);
+        //         $property->images()->create(['image_path' => $path]);
+        //     }
+        // }
+        if ($request->hasFile('images')) {
+            // Upload and process the new profile image
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('images/property_images'), $imageName);
+                $property->images()->create(['image_path' => $imageName]);
+            }
+            $msg .= ' with image';
+        }
         // Redirect back with success message
-        return redirect()->back()->with('success', 'Property added successfully!');
+        return redirect()->back()->with('success', $msg.'!');
     }
     public function dashboard()
     {
@@ -50,6 +70,10 @@ class AdminPropertyController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
+            'bed' => 'required|integer',
+            'bath' => 'required|integer',
+            'area' => 'required|numeric',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $property->update($validatedData);

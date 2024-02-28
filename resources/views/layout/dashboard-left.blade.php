@@ -2,7 +2,7 @@
 
     <div class="dash-top">
         <div class="logo">
-            <a href="javascript:;">
+            <a href="{{ route('crowd')}}">
                 <img src="{{ asset('/images/logo.png') }}" class="img-fluid" alt="">
             </a>
         </div>

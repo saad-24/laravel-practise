@@ -27,12 +27,13 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <button type="submit" class="btn themeBtn">Login</button>
-                <form method="GET" action="{{ route('signup') }}">
-                    @csrf
-                    <div>
-                        <button type="submit" class="btn themeBtn">Signup</button>
-                    </div>
-                </form>
+                
+            </form>
+            <form method="GET" action="{{ route('signup') }}">
+                @csrf
+                <div>
+                    <button type="submit" class="btn themeBtn">Signup</button>
+                </div>
             </form>
 
         </div>

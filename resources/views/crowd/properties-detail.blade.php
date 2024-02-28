@@ -1,7 +1,10 @@
 @extends('layout.main')
 
 @section('content')
-@include('layout.dashboard-left')
+<body class="homeBody">
+
+    @include('layout.dashboard-left')
+
     <section class="prop-detail-banner">
         <div class="container-fluid">
             <div class="row">
@@ -10,7 +13,7 @@
                     <div class="prop-det-cont">
                         <div class="first-image">
                             <figure>
-                                <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid w-100" alt="Property Image">
+                                <img src="{{ url('images/property_images/' . $image->image_path) }}" class="img-fluid w-100" alt="Property Image">
                             </figure>
                         </div>
                     </div>
@@ -21,16 +24,17 @@
     </section>
 
 
-    <section class="prop-detail-sect">
+    <section class=" prop-detail-sect">
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
                     <div class="prop-det-cont">
+                        {{-- @dd($property) --}}
                         <h2>{{ $property->name }}</h2>
                         <ul class="anim-list">
-                            <li><span>1 bed</span></li>
-                            <li><span>2 bath</span></li>
-                            <li><span>762 sq.ft</span></li>
+                            <li><span>{{ $property->bed }} bed</span></li>
+                            <li><span>{{ $property->bath }} bath</span></li>
+                            <li><span>{{ $property->area }} sq.ft</span></li>
                             <li><span>Dubai Marina</span></li>
                         </ul>
 
@@ -294,11 +298,105 @@
                                 berthed there, creating a picturesque setting for dwellers to enjoy. </p>
                         </div>
                         <div class="financial">
+
+                            <h2 class="newHeading">Financials</h2>
+
                             <div class="row">
                                 <div class="col-md-6">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Property cost</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>Property price</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>AED 1,611,000</span></p>
+                                                </td>
+                                            </tr>
 
+                                            <tr>
+                                                <td>
+                                                    <p>Transaction costs</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>AED 206,136</span></p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p>Stake fee</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>1.5%</span></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>
+                                                    <p>Investment cost</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>AED 1,817,136</span></p>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
-                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Rental income (Year 1)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>Annual gross rent</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>AED 118,000</span></p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p>Service charges</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>(AED 9,000)</span></p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p>Mgmt. and maintenance</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>(AED 16,385)</span></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>
+                                                    <p>Annual net income</p>
+                                                </td>
+                                                <td>
+                                                    <p><span>AED 92,615</span></p>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <p>This is an estimate for the 1st year of ownership</p>
+                                </div>
                             </div>
                         </div>
 
@@ -418,7 +516,110 @@
 
 
                 </div>
-                <div class="col-md-5"></div>
+                <div class="col-md-5">
+                    <div class="prop-price-fixed">
+                        <div class="prop-price-card">
+                            <h4>Property price</h4>
+                            <h3><sub>AED</sub> {{ number_format($property->price) }}</h3>
+                            <progress id="file" value="85" max="100"> 85% </progress>
+
+                            <div class="funded">
+                                @php
+                                    $percentage = ($property->total_investment / $property->price) * 100;
+                        
+                                    $percentage = min($percentage, 100);
+                                @endphp
+                                <h3>{{ number_format($percentage, 0) }}% funded</h3>
+                                <h3>
+                                    @php
+                                        $available = max($property->price - $property->total_investment, 0);
+                                    @endphp
+                                    AED {{ number_format($available) }} Available
+                                </h3>
+                            </div>
+
+                            <div class="funded fundedTime">
+                                <h3><span>{{ \App\Models\Investment::where('property_id', $property->id)->distinct()->count('user_id') }}</span> investors</h3>
+                                <h3><span><i class="fal fa-clock"></i></span> 44 days left</h3>
+                            </div>
+                            <div class="prop-table">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>Annualised return</p>
+                                        </td>
+                                        <td>
+                                            <p><span>9.73%</span></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p>Annual appreciation</p>
+                                        </td>
+                                        <td>
+                                            <p><span>6%</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Projected gross yield</p>
+                                        </td>
+                                        <td>
+                                            <p><span>7.32%</span></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p>Projected net yield</p>
+                                        </td>
+                                        <td>
+                                            <p><span>5.75%</span></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            @if(Auth::check() && !Auth::user()->is_admin)
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><svg width="32" height="32"
+                                                viewBox="0 0 66 66" fill="none">
+                                                <path fill="#5B9D3B"
+                                                    d="M63.15405,21.6983C58.70056,9.06049,46.66138,0,32.5,0c-3.37939,0-6.63782,0.5166-9.70184,1.47375V21.6983H63.15405z">
+                                                </path>
+                                                <path fill="#FFFFFF"
+                                                    d="M22.79816,21.6983v21.68567h40.32806C64.33588,39.98053,65,36.31842,65,32.5c0-3.7879-0.65472-7.42133-1.84595-10.8017H22.79816z">
+                                                </path>
+                                                <path fill="#121C30"
+                                                    d="M22.79816,63.52625C25.86218,64.4834,29.12061,65,32.5,65c14.13086,0,26.14966-9.02087,30.62622-21.61603H22.79816V63.52625z">
+                                                </path>
+                                                <path fill="#B81942"
+                                                    d="M22.79816,21.6983V1.47375C9.58795,5.60034,0,17.93011,0,32.5s9.58795,26.89966,22.79816,31.02625V43.38397V21.6983z">
+                                                </path>
+                                            </svg> AED</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="2,000" aria-label="Username"
+                                        aria-describedby="basic-addon1">
+
+                                </div>
+                                <button type="submit" class="themeBtn">Add to Cart</button>
+                            </form>
+                            <ul>
+                                <li><a href="javascript:;"><i class="fal fa-plus"></i> AFD 2,000</a></li>
+                                <li><a href="javascript:;"><i class="fal fa-plus"></i> AFD 5,000</a></li>
+                                <li><a href="javascript:;"><i class="fal fa-plus"></i> AFD 10,000</a></li>
+                            </ul>
+                            <p class="prop-para">You won't be charged yet</p>
+                        </div>
+                        @endif
+                        {{-- @dd($errors) --}}
+                        
+                        <p class="prop-para"><i class="fal fa-stars"></i> 4,987 people viewed this property</p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>

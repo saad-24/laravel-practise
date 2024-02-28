@@ -37,7 +37,12 @@ class FrontController extends Controller
 
     public function Portfolio()
     {
-        return view('crowd.portfolio-dashboard');
+        $user = Auth::user();
+
+        $properties = Property::with(['investments' => function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        }])->get();
+        return view('crowd.portfolio-dashboard', compact('properties'));
     }
 
     public function Cart()

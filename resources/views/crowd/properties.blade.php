@@ -42,7 +42,7 @@
                                             {{-- @dd($property->images) --}}
                                             @foreach ($property->images->take(1) as $image)
                                                 <figure>
-                                                    <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid w-100" alt="Property Image">
+                                                    <img src="{{ url('images/property_images/' . $image->image_path) }}" class="img-fluid w-100" alt="Property Image">
                                                 </figure>
                                             @endforeach
 
