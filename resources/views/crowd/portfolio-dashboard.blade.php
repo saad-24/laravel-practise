@@ -168,7 +168,16 @@
                                                                     {{ $property->name }}
                                                                 </td>
                                                                 <td>
+                                                                    Dubai
+                                                                </td>
+                                                                <td>
                                                                     {{ $property->investments->sum('investment_amount') }}
+                                                                </td>
+                                                                <td>
+                                                                    N/A
+                                                                </td>
+                                                                <td>
+                                                                    {{ $property->status }}
                                                                 </td>
                                                             </tr>
                                                             

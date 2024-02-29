@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PropertyDetailController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PayPalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,8 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
     Route::get('/portfolio', [FrontController::class, 'Portfolio'])->name('crowd.portfolio');
+    Route::post('/cart/add/{property}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/cart', [FrontController::class, 'Cart'])->name('crowd.cart');
     Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
+    //paypal
+    Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+    Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+    Route::get('/success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+    Route::get('/cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
     Route::get('/about', [FrontController::class, 'About'])->name('crowd.about');
     Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

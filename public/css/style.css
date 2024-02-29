@@ -1095,13 +1095,13 @@ h3.subtitle {
 .regBody footer {
   display: none;
 }
-.registBanner {
+/* .registBanner {
   padding: 0;
   height: 100vh;
   display: flex;
   align-items: center;
   background: #f3f3f3;
-}
+} */
 .registCont img {
   height: 953px;
 }
@@ -3636,4 +3636,12 @@ section.blg-relate-sect {
 .prop-detail-banner {
   padding: 0;
   padding-left: 22rem;
+}
+
+td {
+  padding: 10px 20px;
+}
+
+th {
+  padding: 10px 20px;
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Funded;
 use App\Models\Property;
+use App\Models\Investment;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,22 +34,42 @@ class FrontController extends Controller
 
     public function Rewards()
     {
-        return view('crowd.reward-dashboard');
+        $user = Auth::user();
+
+        $properties = Property::whereHas('investments', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
+
+        $userTotalInvestments = Investment::where('user_id', $user->id)->get();
+
+        $totalInvestment = 0;
+        foreach($userTotalInvestments as $userTotalInvestment) {
+            $totalInvestment += $userTotalInvestment['investment_amount'];
+        }
+
+        return view('crowd.reward-dashboard', compact('properties', 'totalInvestment'));
     }
 
     public function Portfolio()
     {
         $user = Auth::user();
 
-        $properties = Property::with(['investments' => function ($query) use ($user) {
+        $properties = Property::whereHas('investments', function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        }])->get();
+        })->get();
+        // dd($properties);
+
         return view('crowd.portfolio-dashboard', compact('properties'));
     }
 
-    public function Cart()
+
+    public function cart()
     {
-        return view('crowd.cart-dashboard');
+        $cartItems = Cart::all();
+
+        $properties = Property::whereIn('id', $cartItems->pluck('property_id'))->get();
+
+        return view('crowd.cart-dashboard', compact('cartItems', 'properties'));
     }
 
     public function Wallet()

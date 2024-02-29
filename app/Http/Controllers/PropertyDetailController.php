@@ -16,6 +16,7 @@ class PropertyDetailController extends Controller
 
         $investment = Investment::find($id);
         return view('crowd.properties-detail', compact('property','investment'));
+        // return view('crowd.property_detail', compact('property','investment'));
     }
 
 }

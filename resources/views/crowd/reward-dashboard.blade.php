@@ -82,7 +82,7 @@
                                                         <div class="col-md-6">
                                                             <div class="insCard insQuick">
                                                                 <h6>Crowd Intro <i class="far fa-angle-right"></i></h6>
-                                                                <p>AED 0 <span>Invested in the last 12 months</span></p>
+                                                                <p>AED {{ $totalInvestment }} <span>Invested in the last 12 months</span></p>
                                                                 <progress id="file" value="0" max="100">0%
                                                                 </progress>
                                                                 <p>Invest AED 25,000 to reach Plus</p>

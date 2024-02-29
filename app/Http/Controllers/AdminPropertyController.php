@@ -20,6 +20,8 @@ class AdminPropertyController extends Controller
             'bed' => 'required|integer',
             'bath' => 'required|integer',
             'area' => 'required|numeric',
+            'category' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
         ]);
         // dd($validatedData);
         $msg=null;
@@ -30,6 +32,8 @@ class AdminPropertyController extends Controller
             'bed' => $validatedData['bed'],
             'bath' => $validatedData['bath'],
             'area' => $validatedData['area'],
+            'category' => $validatedData['category'],
+            'status' => $validatedData['status'],
         ]);
         // dd($property);
         if($property){
@@ -73,6 +77,8 @@ class AdminPropertyController extends Controller
             'bed' => 'required|integer',
             'bath' => 'required|integer',
             'area' => 'required|numeric',
+            'category' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

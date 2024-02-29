@@ -16,8 +16,7 @@
             @endif
 
             <form method="POST" action="{{ route('login') }}">
-                @csrf <!-- CSRF Token -->
-
+                @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autofocus>
@@ -27,14 +26,10 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <button type="submit" class="btn themeBtn">Login</button>
-                
+                <a href="{{ route('signup') }}" class="btn themeBtn">Signup</a>
             </form>
-            <form method="GET" action="{{ route('signup') }}">
-                @csrf
-                <div>
-                    <button type="submit" class="btn themeBtn">Signup</button>
-                </div>
-            </form>
+            
+            
 
         </div>
     </section>

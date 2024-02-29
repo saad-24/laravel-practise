@@ -9,7 +9,16 @@ class Property extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'total_investment', 'bed','bath','area'];
+    protected $fillable = [
+        'name',
+        'price', 
+        'total_investment', 
+        'bed',
+        'bath',
+        'area', 
+        'category',
+        'status',
+    ];
 
     public function images()
     {

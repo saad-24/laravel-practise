@@ -604,6 +604,10 @@
                                         aria-describedby="basic-addon1">
 
                                 </div>
+                                
+                            </form>
+                            <form action="{{ route('cart.add', $property) }}" method="POST">
+                                @csrf
                                 <button type="submit" class="themeBtn">Add to Cart</button>
                             </form>
                             <ul>

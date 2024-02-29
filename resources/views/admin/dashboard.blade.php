@@ -29,6 +29,19 @@
                 <label for="price">Area:</label>
                 <input type="text" id="area" name="area" required>
             </div>
+            <div>
+                <label for="price">Category:</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+            <div>
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="available">available</option>
+                    <option value="funded">funded</option>
+                    <option value="exited">exited</option>
+                </select>
+            </div>
+            
             <button type="submit">Save Property</button>
         </form>
     </div>
