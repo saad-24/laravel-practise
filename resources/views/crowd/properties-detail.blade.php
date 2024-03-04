@@ -608,6 +608,8 @@
                             </form>
                             <form action="{{ route('cart.add', $property) }}" method="POST">
                                 @csrf
+                                <input type="text" class="form-control" placeholder="2,000" name="price"
+                                        aria-describedby="basic-addon1">
                                 <button type="submit" class="themeBtn">Add to Cart</button>
                             </form>
                             <ul>

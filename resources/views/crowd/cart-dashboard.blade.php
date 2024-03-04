@@ -20,7 +20,8 @@
                         <div class="drBottom">
                             <div class="row">
                                 <div class="col-md-11">
-                                    @if ($cartItems->isNotEmpty())
+                                    @if ($data->isNotEmpty())
+                                        {{-- @dd($data) --}}
                                         <!-- Display cart items -->
                                         <table>
                                             <thead>
@@ -32,18 +33,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($cartItems as $item)
+                                                @foreach ($data as $item)
                                                     <tr>
-                                                        <td>{{ $properties->where('id', $item->property_id)->first()->name }}</td>
-                                                        <td>{{ $properties->where('id', $item->property_id)->first()->price }}</td>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td>{{ $item->price }}</td>
                                                         <td>{{ $item->quantity }}</td>
-                                                        <td>
+                                                        {{-- <td>
                                                             <figure><img src="{{ asset('/images/prog.png') }}" class="img-fluid" alt=""></figure>
                                                             @php
                                                                 $percentage = ($properties->where('id', $item->property_id)->first()->total_investment / $properties->where('id', $item->property_id)->first()->price) * 100;
                                                                 $percentage = min($percentage, 100);
                                                             @endphp
                                                             {{ number_format($percentage, 0) }}% Funded
+                                                        </td> --}}
+                                                        <td>
+                                                            <form action="{{ route('cart.add', $item->id) }}" method="POST">
+                                                                @csrf
+                                                                <input type="text" class="form-control" placeholder="2,000" name="price"
+                                                                        aria-describedby="basic-addon1">
+                                                                <button type="submit" class="themeBtn">Add to Cart</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                     
@@ -52,6 +61,7 @@
                                         </table>
                                         <a href="{{ route('processTransaction')}}" class="btn themeBtn">Pay</a>
                                     @else
+                                        {{-- @dd($data) --}}
                                         <!-- Show empty cart message -->
                                         <div class="cart-empty">
                                             <span><i class="fal fa-shopping-cart"></i></span>

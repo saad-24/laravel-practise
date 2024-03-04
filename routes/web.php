@@ -37,8 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
     Route::get('/portfolio', [FrontController::class, 'Portfolio'])->name('crowd.portfolio');
-    Route::post('/cart/add/{property}', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart', [FrontController::class, 'Cart'])->name('crowd.cart');
+    Route::post('/cart/add/{property}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'index'])->name('crowd.cart');
     Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
     //paypal
     Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
