@@ -60,6 +60,9 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        <div class="alert alert-primary" role="alert">
+                                            {{$subTotal}}
+                                        </div>
                                         <a href="{{ route('processTransaction')}}" class="btn themeBtn">Pay</a>
                                     @else
                                         {{-- @dd($data) --}}

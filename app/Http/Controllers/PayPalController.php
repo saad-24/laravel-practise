@@ -22,8 +22,11 @@ class PayPalController extends Controller
      */
     public function processTransaction(Request $request)
     {
-
         
+        // cart sub total
+        $userId = Auth::user()->id;
+        $subTotal = \Cart::session($userId)->getSubTotal();
+
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -37,7 +40,7 @@ class PayPalController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => "1000.00"
+                        "value" => $subTotal
                     ]
                 ]
             ]

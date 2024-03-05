@@ -14,10 +14,6 @@ class CartController extends Controller
         $userId = Auth::user()->id;
         $cart = \Cart::session($userId);
         $data = $cart->getContent();
-        
-        dd($data);
-        // $userId = auth()->user()->id;
-        // $data = \Cart::session($userId)->getContent();
         $subTotal = \Cart::session($userId)->getSubTotal();
 
         return view('crowd.cart-dashboard', compact('data', 'subTotal'));
