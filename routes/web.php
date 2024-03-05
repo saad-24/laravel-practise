@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PropertyDetailController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\CardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/add/{property}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'index'])->name('crowd.cart');
     Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
+    Route::get('/add_card', [FrontController::class, 'addCard'])->name('crowd.card');
+    Route::post('/save-card', [CardController::class, 'saveCard'])->name('save-card');
     //paypal
     Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
@@ -61,5 +64,4 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
     Route::put('/admin/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');
     Route::delete('/admin/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
-    // Route::post('/admin/properties/{property}/move-to-funded', [AdminPropertyController::class, 'moveToFunded'])->name('properties.move-to-funded');
 });

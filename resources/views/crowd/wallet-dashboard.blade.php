@@ -9,11 +9,9 @@
         <div class="container-fluid p-0">
             <div class="row m-0">
                 <div class="col-md-3 p-0">
-                    
                 </div>
                 <div class="col-md-9 p-0">
                     <div class="dashRight">
-                        
                         <div class="drMedium">
                             <h2>Wallet</h2>
                         </div>
@@ -72,14 +70,28 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="bankCards">
+                                                    
                                                     <h3>Cards</h3>
                                                     <div class="bankCardInner">
+                                                        @foreach ($card as $item)
+                                                        <div class="card w-50">
+                                                            <div class="card-body">
+                                                              <h5 class="card-title">{{$item->card_name}}</h5>
+                                                              <p class="card-text font-weight-bold">{{$item->card_number}}</p>
+                                                              {{-- <a href="#" class="btn btn-primary">Button</a> --}}
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                        {{-- @foreach ($card as $item)
+                                                            <h6>{{$item->card_number}}</h6>
+                                                            <h6>{{$item->cvv}}</h6>
+                                                        @endforeach --}}
                                                         <p><span><i class="fas fa-credit-card-blank"></i></span> Add a
                                                             card to enjoy instant deposits from
                                                             anywhere in the
                                                             world</p>
-                                                        <button class="addcardBtn"><i class="fal fa-plus"></i> Add New
-                                                            Card</button>
+                                                        <a href="{{ route('crowd.card')}}"><button class="addcardBtn"><i class="fal fa-plus"></i> Add New
+                                                            Card</button></a>
                                                     </div>
                                                 </div>
                                             </div>

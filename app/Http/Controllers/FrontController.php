@@ -5,6 +5,7 @@ use App\Models\Funded;
 use App\Models\Property;
 use App\Models\Investment;
 use App\Models\Cart;
+use App\Models\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,7 +82,10 @@ class FrontController extends Controller
 
     public function Wallet()
     {
-        return view('crowd.wallet-dashboard');
+        $userId = Auth::user()->id;
+        $card = Card::where('user_id', $userId)->get();
+        // dd($card);
+        return view('crowd.wallet-dashboard', compact('card'));
     }
 
     public function About()
@@ -92,6 +96,11 @@ class FrontController extends Controller
     public function Golden()
     {
         return view('crowd.golden-visa');
+    }
+
+    public function addCard()
+    {
+        return view('crowd.add_card');
     }
 
 

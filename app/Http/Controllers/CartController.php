@@ -14,7 +14,8 @@ class CartController extends Controller
         $userId = Auth::user()->id;
         $cart = \Cart::session($userId);
         $data = $cart->getContent();
-        // dd($data);
+        
+        dd($data);
         // $userId = auth()->user()->id;
         // $data = \Cart::session($userId)->getContent();
         $subTotal = \Cart::session($userId)->getSubTotal();
@@ -53,6 +54,10 @@ class CartController extends Controller
                 'name' => $property->name,
                 'price' => $request->price,
                 'quantity' => 1,
+                'attributes'=> array(
+                    'property_price' => $property->price,
+                    'property_investment' => $property->total_investment,
+                )
             ]);
         }
 
