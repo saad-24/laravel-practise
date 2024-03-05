@@ -35,4 +35,34 @@ class CardController extends Controller
 
         return redirect()->route('crowd.wallet');
     }
+
+    public function edit($id)
+    {
+        $card = Card::find($id);
+        return view('crowd.edit-card', compact('card'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'card_number' => 'required|digits:16',
+            'card_name' => 'required',
+            'expiry_date' => 'required|date_format:m/Y',
+            'cvv' => 'required|digits:3',
+        ]);
+
+        $card = Card::find($id);
+        $card->update($request->all());
+
+        return redirect()->route('crowd.wallet')->with('success', 'Card details updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $card = Card::find($id);
+        $card->delete();
+
+        return redirect()->route('crowd.wallet')->with('success', 'Card deleted successfully.');
+    }
+
 }

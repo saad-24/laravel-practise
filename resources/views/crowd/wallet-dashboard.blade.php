@@ -74,18 +74,19 @@
                                                     <h3>Cards</h3>
                                                     <div class="bankCardInner">
                                                         @foreach ($card as $item)
-                                                        <div class="card w-50">
+                                                        <div class="card w-50 d-flex">
                                                             <div class="card-body">
                                                               <h5 class="card-title">{{$item->card_name}}</h5>
                                                               <p class="card-text font-weight-bold">{{$item->card_number}}</p>
                                                               {{-- <a href="#" class="btn btn-primary">Button</a> --}}
                                                             </div>
+                                                            <div class="card-buttons">
+                                                                <a href="{{ route('edit-card', $item->id) }}" class="btn btn-primary">Edit</a>
+                                                                <a href="{{ route('delete-card', $item->id) }}" class="btn btn-danger">Delete</a>
+                                                            </div>
                                                         </div>
                                                         @endforeach
-                                                        {{-- @foreach ($card as $item)
-                                                            <h6>{{$item->card_number}}</h6>
-                                                            <h6>{{$item->cvv}}</h6>
-                                                        @endforeach --}}
+                                                        
                                                         <p><span><i class="fas fa-credit-card-blank"></i></span> Add a
                                                             card to enjoy instant deposits from
                                                             anywhere in the

@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
     Route::get('/add_card', [FrontController::class, 'addCard'])->name('crowd.card');
     Route::post('/save-card', [CardController::class, 'saveCard'])->name('save-card');
+    Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('edit-card');
+    Route::put('/update-card/{id}', [CardController::class, 'update'])->name('update-card');
+    Route::any('/delete-card/{id}', [CardController::class, 'destroy'])->name('delete-card');
+
     //paypal
     Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
