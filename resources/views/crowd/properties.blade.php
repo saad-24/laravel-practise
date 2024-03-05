@@ -75,10 +75,24 @@
                                                             <span>total ROI</span>
                                                         </li>
                                                     </ul>
+                                                    @if(Auth::check() && Auth::user()->is_admin)
+                                                    <br>
+                                                    <span>{{ $property->status }}</span>
+                                                    <br>
+                                                    <br>
+                                                    <div class="row admin_btn">
+                                                        
+                                                            
+                                                            <a href="{{ route('admin.property.edit', $property->id) }}" class="btn themeBtn">Edit</a>
+                                                            <a href="{{ route('admin.property.destroy', $property->id) }}" class="btn btn-danger danger">Delete</a>
+                                                        
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
+                                    
                                 @endforeach
                             </div>
                         </div>

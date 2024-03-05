@@ -107,4 +107,10 @@ class AdminPropertyController extends Controller
         return redirect()->route('all.properties')->with('success', 'Property moved to Funded successfully!');
     }
 
+    public function index()
+    {
+        
+        return route('admin.crowd');
+    }
+
 }

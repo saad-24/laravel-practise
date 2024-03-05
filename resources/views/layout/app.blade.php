@@ -53,7 +53,12 @@
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul class="navbar-nav mx-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="{{ route('front.properties') }}">Properties</a>
+                                        @if(Auth::check() && Auth::user()->is_admin)
+                                            <a class="nav-link" href="{{ route('admin_properties') }}">Properties</a>
+                                        @else
+                                            <a class="nav-link" href="{{ route('front.properties') }}">Properties</a>
+                                        @endif
+                                        {{-- <a class="nav-link" href="{{ route('front.properties') }}">Properties</a> --}}
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('crowd.about') }}">About</a>

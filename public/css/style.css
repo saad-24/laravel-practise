@@ -833,7 +833,7 @@ footer {
   padding-bottom: 10rem;
   padding-top: 5rem;
   margin-left: 25rem;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .tab-navbars .nav-tabs {
   border: none;
@@ -3644,4 +3644,37 @@ td {
 
 th {
   padding: 10px 20px;
+}
+
+.admin_btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.danger {
+    width: 180px;
+    height: 60px;
+    /* background: linear-gradient(180deg, #d7960a, #b68911); */
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.688rem;
+    transition: 0.5s all ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 10px;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-form .form-group {
+  padding-left: 2rem;
 }

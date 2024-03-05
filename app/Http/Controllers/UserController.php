@@ -44,10 +44,13 @@ class UserController extends Controller
 
         // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
-            // Authentication successful
-//            $properties = Property::all();
-////            return view('crowd.index', compact('properties'));
-            return redirect()->route('crowd');
+            if (Auth::user()->is_admin) {
+                // Redirect admin user to admin.crowd route
+                return redirect()->route('admin.home');
+            } else {
+                // Redirect non-admin user to crowd route
+                return redirect()->route('crowd');
+            }
         } else {
             // Authentication failed
             return redirect()->back()->withInput($request->only('email'))->withErrors([
@@ -66,8 +69,14 @@ class UserController extends Controller
     public function userProperties()
     {
         $properties = Property::all(); // Fetch all properties
-
-        return view('crowd.index', compact('properties'));
+        if (Auth::user()->is_admin) {
+            // Redirect admin user to admin.crowd route
+            return view('admin.index', compact('properties'));
+        } else {
+            // Redirect non-admin user to crowd route
+            return view('crowd.index', compact('properties'));
+        }
+        
     }
 
 

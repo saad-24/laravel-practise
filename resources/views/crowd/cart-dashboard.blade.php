@@ -21,6 +21,7 @@
                             <div class="row">
                                 <div class="col-md-11">
                                     @if ($data->isNotEmpty())
+                                    
                                         {{-- @dd($data) --}}
                                         <!-- Display cart items -->
                                         <table>
@@ -82,3 +83,5 @@
 
 
 @endsection
+
+    

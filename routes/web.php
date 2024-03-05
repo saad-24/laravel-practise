@@ -54,11 +54,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->group(function () {
     // Admin routes here
+    Route::any('/admin', [UserController::class, 'userProperties'])->name('admin.home');
+    Route::get('/admin/properties', [FrontController::class, 'properties'])->name('admin_properties');
     Route::post('/admin/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
-    Route::get('/admin/property', [FrontController::class, 'AdminDashboard']);
-    Route::get('/admin/properties', [AdminPropertyController::class, 'dashboard'])->name('admin.property.dashboard');
+    Route::get('/admin/property', [FrontController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
     Route::put('/admin/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');
     Route::delete('/admin/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
-    Route::post('/admin/properties/{property}/move-to-funded', [AdminPropertyController::class, 'moveToFunded'])->name('properties.move-to-funded');
+    // Route::post('/admin/properties/{property}/move-to-funded', [AdminPropertyController::class, 'moveToFunded'])->name('properties.move-to-funded');
 });
