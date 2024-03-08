@@ -78,31 +78,37 @@ class PayPalController extends Controller
             $cart = \Cart::session($userId);
             $cartItems = $cart->getContent();
             foreach ($cartItems as $item) {
+                $property = Property::find($item->id);
                 $cart->update($item->id, [
                     'attributes'=> array(
+                    'property_price' => $property->price,
+                    'property_investment' => $property->total_investment,
                     'status'=> 'Paid',
                 )]);
             }
             foreach ($cartItems as $item) {
-                if ($item->status === 'paid') {
-                    $property = Property::find($item->property_id);
+                if ($item->attributes['status'] === 'Paid') {
+                    $property = Property::find($item->id);
+                // dd($property);
                     $property->increment('total_investment', $item->price);
                     $property->save();
                     $investment = new Investment();
                     $investment->user_id = $userId;
-                    $investment->property_id = $item->property_id;
+                    $investment->property_id = $item->id;
                     $investment->investment_amount = $item->price;
                     $investment->save();
+                    // dd($item);
                     $percentage_ownership = $item->price / $item->attributes['property_price'] * 100;
-                    $ownership = Ownership::where('user_id', $userId)->where('property_id', $item->property_id);
+                    // $ownership = Ownership::find($userId);
+                    $ownership = Ownership::where('user_id', $userId)->where('property_id', $item->id)->first();
                     if ($ownership) {
-                        $ownership->percentage_ownership = $percentage_ownership;
+                        $ownership->increment('percentage_ownership', $percentage_ownership);
                         $ownership->save();
                     } else {
 
                         $ownership = Ownership::create([
                             'user_id' => $userId,
-                            'property_id' => $item->price,
+                            'property_id' => $item->id,
                             'percentage_ownership' => $percentage_ownership,
                         ]);
                     }
