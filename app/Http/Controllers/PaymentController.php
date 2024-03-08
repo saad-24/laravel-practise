@@ -23,13 +23,16 @@ class PaymentController extends Controller
                 'property_investment' => $property->total_investment,
                 'status'=> 'Paid',
             )]);
+
         }
+        $cart = \Cart::session($userId);
+        $cartItems = $cart->getContent();
         foreach ($cartItems as $item) {
-            // dd($item);
+//             dd($item);
             if ($item->attributes['status'] === 'Paid') {
 
                 $property = Property::find($item->id);
-                // dd($property);
+//                dd($property);
                 $property->increment('total_investment', $item->price);
                 $property->save();
                 $investment = new Investment();

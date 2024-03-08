@@ -9,11 +9,11 @@
         <div class="container-fluid p-0">
             <div class="row m-0">
                 <div class="col-md-3 p-0">
-                    
+
                 </div>
                 <div class="col-md-9 p-0">
                     <div class="dashRight">
-                        
+
                         <div class="drMedium">
                             <h2>Portfolio</h2>
                         </div>
@@ -26,7 +26,7 @@
                                                 <div class="depCard">
                                                     <div>
                                                         <h3>Portfolio value</h3>
-                                                        <h4>AED 0</h4>
+                                                        <h4>AED {{ number_format($totalInvestmentAmount) }}</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -95,7 +95,7 @@
                                                                     alt="">
                                                                 <h5>Number of
                                                                     properties</h5>
-                                                                <p>{{$properties->count()}} %</p>
+                                                                <p>{{ $totalInvestmentsByProperty->count() }} %</p>
                                                             </div>
                                                         </div>
 
@@ -162,7 +162,10 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach($properties as $property)
+                                                            @foreach($totalInvestmentsByProperty as $item)
+                                                                @php
+                                                                    $property = App\Models\Property::find($item->property_id);
+                                                                @endphp
                                                             <tr>
                                                                 <td>
                                                                     {{ $property->name }}
@@ -171,7 +174,7 @@
                                                                     Dubai
                                                                 </td>
                                                                 <td>
-                                                                    {{ $property->investments->sum('investment_amount') }}
+                                                                    {{ $item->total_investment }}
                                                                 </td>
                                                                 <td>
                                                                     N/A
@@ -180,7 +183,7 @@
                                                                     {{ $property->status }}
                                                                 </td>
                                                             </tr>
-                                                            
+
                                                             @endforeach
                                                         </tbody>
                                                     </table>

@@ -11,11 +11,11 @@ class Property extends Model
 
     protected $fillable = [
         'name',
-        'price', 
-        'total_investment', 
+        'price',
+        'total_investment',
         'bed',
         'bath',
-        'area', 
+        'area',
         'category',
         'status',
     ];

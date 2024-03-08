@@ -6,6 +6,7 @@ use App\Models\Property;
 use App\Models\Investment;
 use App\Models\Cart;
 use App\Models\Card;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,13 +62,16 @@ class FrontController extends Controller
     public function Portfolio()
     {
         $user = Auth::user();
+        $investments = $user->investments;
 
-        $properties = Property::whereHas('investments', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })->get();
-        // dd($properties);
+        $totalInvestmentAmount = $investments->sum('investment_amount');
+        $totalInvestmentsByProperty = $user->investments()
+            ->select('property_id', DB::raw('SUM(investment_amount) as total_investment'))
+            ->groupBy('property_id')
+            ->get();
 
-        return view('crowd.portfolio-dashboard', compact('properties'));
+
+        return view('crowd.portfolio-dashboard', compact('totalInvestmentsByProperty', 'totalInvestmentAmount'));
     }
 
 
