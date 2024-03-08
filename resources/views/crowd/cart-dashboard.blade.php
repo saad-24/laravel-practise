@@ -63,7 +63,9 @@
                                         <div class="alert alert-primary" role="alert">
                                             {{$subTotal}}
                                         </div>
-                                        <a href="{{ route('processTransaction')}}" class="btn themeBtn">Pay</a>
+                                        <a href="{{ route('processTransaction')}}" class="btn themeBtn">Pay with Paypal</a>
+                                        <a href="{{ route('stripe')}}" class="btn themeBtn">Pay with Stripe</a>
+                                        <a href="{{ route('properties.pay')}}" class="btn themeBtn">Test Payment</a>
                                     @else
                                         {{-- @dd($data) --}}
                                         <!-- Show empty cart message -->

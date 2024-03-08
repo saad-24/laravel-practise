@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PropertyDetailController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\CardController;
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,8 @@ Route::middleware('auth')->group(function () {
     // Auth routes here
     Route::any('/', [UserController::class, 'userProperties'])->name('crowd');
     Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])->name('property_detail');
-    Route::post('/properties/{property}/pay', [PaymentController::class, 'pay'])->name('properties.pay');
+    Route::any('/properties/pay', [PaymentController::class, 'pay'])->name('properties.pay');
+    // Route::get('/properties/pay', [PaymentController::class, 'index'])->name('custom');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
     Route::get('/portfolio', [FrontController::class, 'Portfolio'])->name('crowd.portfolio');
@@ -47,11 +49,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/update-card/{id}', [CardController::class, 'update'])->name('update-card');
     Route::any('/delete-card/{id}', [CardController::class, 'destroy'])->name('delete-card');
 
+
     //paypal
     Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
     Route::get('/success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
     Route::get('/cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+    
+    //stripe
+    Route::get('/charge', [StripeController::class, 'index'])->name('stripe');
+    Route::post('/charge', [StripeController::class, 'charge'])->name('stripe-payment');
 
     Route::get('/about', [FrontController::class, 'About'])->name('crowd.about');
     Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');

@@ -28,4 +28,9 @@ class Property extends Model
     {
         return $this->hasMany(Investment::class);
     }
+
+    public function ownerships()
+    {
+        return $this->hasMany(Ownership::class);
+    }
 }

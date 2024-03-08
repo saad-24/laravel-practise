@@ -14,6 +14,7 @@ class CartController extends Controller
         $userId = Auth::user()->id;
         $cart = \Cart::session($userId);
         $data = $cart->getContent();
+        // dd($data);
         $subTotal = \Cart::session($userId)->getSubTotal();
 
         return view('crowd.cart-dashboard', compact('data', 'subTotal'));
@@ -53,6 +54,7 @@ class CartController extends Controller
                 'attributes'=> array(
                     'property_price' => $property->price,
                     'property_investment' => $property->total_investment,
+                    'status'=> 'Not Paid',
                 )
             ]);
         }

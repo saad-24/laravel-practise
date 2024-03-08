@@ -524,6 +524,7 @@
                             <progress id="file" value="85" max="100"> 85% </progress>
 
                             <div class="funded">
+                                {{-- @dd($property) --}}
                                 @php
                                     $percentage = ($property->total_investment / $property->price) * 100;
                         

@@ -14,6 +14,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Property::class);
     }
+    public function ownerships()
+    {
+        return $this->hasMany(Ownership::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
