@@ -2,18 +2,15 @@
 
 @section('content')
 @include('layout.dashboard-left')
-
-
-
     <section class="dashboard-sect">
         <div class="container-fluid p-0">
             <div class="row m-0">
                 <div class="col-md-3 p-0">
-                    
+
                 </div>
                 <div class="col-md-9 p-0">
                     <div class="dashRight">
-                        
+
                         <div class="drMedium">
                             <h2>Cart</h2>
                         </div>
@@ -21,7 +18,7 @@
                             <div class="row">
                                 <div class="col-md-11">
                                     @if ($data->isNotEmpty())
-                                    
+
                                         {{-- @dd($data) --}}
                                         <!-- Display cart items -->
                                         <table>
@@ -56,16 +53,17 @@
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                    
+
                                                 @endforeach
                                             </tbody>
                                         </table>
                                         <div class="alert alert-primary" role="alert">
                                             {{$subTotal}}
                                         </div>
-                                        <a href="{{ route('processTransaction')}}" class="btn themeBtn">Pay with Paypal</a>
-                                        <a href="{{ route('stripe')}}" class="btn themeBtn">Pay with Stripe</a>
-                                        <a href="{{ route('properties.pay')}}" class="btn themeBtn">Test Payment</a>
+                                        <a href="{{ route('checkout')}}" class="btn themeBtn">Proceed to Payment</a>
+{{--                                        <a href="{{ route('processTransaction')}}" class="btn themeBtn">Pay with Paypal</a>--}}
+{{--                                        <a href="{{ route('stripe')}}" class="btn themeBtn">Pay with Stripe</a>--}}
+{{--                                        <a href="{{ route('properties.pay')}}" class="btn themeBtn">Test Payment</a>--}}
                                     @else
                                         {{-- @dd($data) --}}
                                         <!-- Show empty cart message -->
@@ -89,4 +87,3 @@
 
 @endsection
 
-    

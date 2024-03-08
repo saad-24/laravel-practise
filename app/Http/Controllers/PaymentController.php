@@ -12,19 +12,6 @@ class PaymentController extends Controller
 {
     public function pay(Request $request)
     {
-
-        // dd($)
-            // $validatedData = $request->validate([
-            //     'amount' => ['required', 'numeric', 'min:500'],
-            // ]);
-
-            // $property->increment('total_investment', $validatedData['amount']);
-            // // Create a new investment record
-            // $investment = new Investment();
-            // $investment->user_id = Auth::id(); // Current authenticated user ID
-            // $investment->property_id = $property->id;
-            // $investment->investment_amount = $validatedData['amount'];
-            // $investment->save();
         $userId = Auth::user()->id;
         $cart = \Cart::session($userId);
         $cartItems = $cart->getContent();
@@ -40,7 +27,7 @@ class PaymentController extends Controller
         foreach ($cartItems as $item) {
             // dd($item);
             if ($item->attributes['status'] === 'Paid') {
-                
+
                 $property = Property::find($item->id);
                 // dd($property);
                 $property->increment('total_investment', $item->price);
@@ -67,11 +54,12 @@ class PaymentController extends Controller
                         'percentage_ownership' => $percentage_ownership,
                     ]);
                 }
-                
-                
+
+
             }
         }
-
+        \Cart::clear();
+        \Cart::session($userId)->clear();
         return redirect()->route('crowd')->with('success', 'Payment successful!');
     }
 }

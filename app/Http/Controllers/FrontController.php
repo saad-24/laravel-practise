@@ -22,7 +22,7 @@ class FrontController extends Controller
             // Redirect non-admin user to crowd route
             return view('crowd.properties', compact('properties','funded'));
         }
-        
+
     }
 
     public function AdminDashboard()
@@ -101,6 +101,11 @@ class FrontController extends Controller
     public function addCard()
     {
         return view('crowd.add_card');
+    }
+
+    public function checkout()
+    {
+        return view('crowd.checkout');
     }
 
 

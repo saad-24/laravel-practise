@@ -10,7 +10,7 @@ use App\Models\Investment;
 class StripeController extends Controller
 {
     public function index() {
-        
+
         $userId = Auth::user()->id;
         $subTotal = \Cart::session($userId)->getSubTotal();
         return view('crowd.stripe-form', compact('subTotal'));
@@ -27,9 +27,9 @@ class StripeController extends Controller
             'expiry_year' => 'required',
             'cvv' => 'required',
         ]);
- 
+
         $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        
+
         $response = \Stripe\Token::create(array(
             "card" => array(
                 "number"    => $request->input('card_no'),
@@ -49,7 +49,7 @@ class StripeController extends Controller
 
         if($charge['status'] == 'succeeded') {
             $userId = Auth::user()->id;
-            
+
             $cart = \Cart::session($userId);
             $cartItems = $cart->getContent();
             foreach ($cartItems as $item) {
@@ -87,11 +87,13 @@ class StripeController extends Controller
                             'percentage_ownership' => $percentage_ownership,
                         ]);
                     }
-                    
-                    
+
+
                 }
             }
-            
+            \Cart::clear();
+            \Cart::session($userId)->clear();
+
 
             return view('crowd.stripe-succes')->with('succes', 'Payment successful!');
 
@@ -101,6 +103,6 @@ class StripeController extends Controller
         }
 
 
-        
+
     }
 }

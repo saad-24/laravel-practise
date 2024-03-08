@@ -9,23 +9,14 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PayPalController extends Controller
 {
-    /**
-     * create transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function createTransaction()
     {
         return view('crowd.transaction');
     }
-    /**
-     * process transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function processTransaction(Request $request)
     {
-        
+
         // cart sub total
         $userId = Auth::user()->id;
         $subTotal = \Cart::session($userId)->getSubTotal();
@@ -65,7 +56,7 @@ class PayPalController extends Controller
         }
     }
 
-    
+
     public function successTransaction(Request $request)
     {
 
@@ -89,7 +80,6 @@ class PayPalController extends Controller
             foreach ($cartItems as $item) {
                 if ($item->attributes['status'] === 'Paid') {
                     $property = Property::find($item->id);
-                // dd($property);
                     $property->increment('total_investment', $item->price);
                     $property->save();
                     $investment = new Investment();
@@ -112,30 +102,19 @@ class PayPalController extends Controller
                             'percentage_ownership' => $percentage_ownership,
                         ]);
                     }
-                    
-                    
                 }
             }
-            return redirect()
-                ->route('createTransaction')
-                ->with('success', 'Transaction complete.');
-            
+            \Cart::clear();
+            \Cart::session($userId)->clear();
+            return redirect()->route('createTransaction')->with('success', 'Transaction complete.');
+
         } else {
-            return redirect()
-                ->route('createTransaction')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+            return redirect()->route('createTransaction')->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
 
-    /**
-     * cancel transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function cancelTransaction(Request $request)
     {
-        return redirect()
-            ->route('createTransaction')
-            ->with('error', $response['message'] ?? 'You have canceled the transaction.');
+        return redirect()->route('createTransaction')->with('error', $response['message'] ?? 'You have canceled the transaction.');
     }
 }

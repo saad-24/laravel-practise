@@ -119,6 +119,9 @@
       <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/vendor/darryldecode/cart" />
+      <path value="$PROJECT_DIR$/vendor/srmklive/paypal" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">

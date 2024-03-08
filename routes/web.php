@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/portfolio', [FrontController::class, 'Portfolio'])->name('crowd.portfolio');
     Route::post('/cart/add/{property}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'index'])->name('crowd.cart');
+    Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
     Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
     Route::get('/add_card', [FrontController::class, 'addCard'])->name('crowd.card');
     Route::post('/save-card', [CardController::class, 'saveCard'])->name('save-card');
@@ -55,7 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
     Route::get('/success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
     Route::get('/cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
-    
+
     //stripe
     Route::get('/charge', [StripeController::class, 'index'])->name('stripe');
     Route::post('/charge', [StripeController::class, 'charge'])->name('stripe-payment');
