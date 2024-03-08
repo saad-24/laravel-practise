@@ -11,6 +11,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\WalletTransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +66,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+
+    Route::get('/wallet/deposit', [WalletTransactionController::class, 'depositForm'])->name('wallet');
+    Route::post('/wallet/deposit', [WalletTransactionController::class, 'deposit'])->name('wallet.deposit');
+
 });
 
 Route::middleware('admin')->group(function () {

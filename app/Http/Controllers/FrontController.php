@@ -88,6 +88,7 @@ class FrontController extends Controller
     {
         $userId = Auth::user()->id;
         $card = Card::where('user_id', $userId)->get();
+//        $wallet = Wallet
         // dd($card);
         return view('crowd.wallet-dashboard', compact('card'));
     }

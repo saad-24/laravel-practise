@@ -27,7 +27,7 @@
                                                         <h4>AED 0</h4>
                                                     </div>
                                                     <div class="depButton">
-                                                        <button class="depBtn">Deposit</button>
+                                                        <a href="{{ route('wallet') }}" class="depBtn">Deposit</a>
                                                         <button class="depBtn">Withdraw</button>
                                                     </div>
                                                 </div>
@@ -70,7 +70,7 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="bankCards">
-                                                    
+
                                                     <h3>Cards</h3>
                                                     <div class="bankCardInner">
                                                         @foreach ($card as $item)
@@ -86,7 +86,7 @@
                                                             </div>
                                                         </div>
                                                         @endforeach
-                                                        
+
                                                         <p><span><i class="fas fa-credit-card-blank"></i></span> Add a
                                                             card to enjoy instant deposits from
                                                             anywhere in the
