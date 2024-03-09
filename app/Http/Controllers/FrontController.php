@@ -6,6 +6,7 @@ use App\Models\Property;
 use App\Models\Investment;
 use App\Models\Cart;
 use App\Models\Card;
+use App\Models\WalletTransaction;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -88,9 +89,9 @@ class FrontController extends Controller
     {
         $userId = Auth::user()->id;
         $card = Card::where('user_id', $userId)->get();
-//        $wallet = Wallet
-        // dd($card);
-        return view('crowd.wallet-dashboard', compact('card'));
+        $wallet = WalletTransaction::where('user_id', $userId)->first();
+
+        return view('crowd.wallet-dashboard', compact('card','wallet'));
     }
 
     public function About()

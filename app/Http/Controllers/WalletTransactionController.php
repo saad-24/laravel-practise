@@ -9,27 +9,29 @@ use Auth;
 
 class WalletTransactionController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function depositForm()
     {
         return view('crowd.deposit-form');
     }
 
-    public function deposit(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deposit(Request $request): \Illuminate\Http\RedirectResponse
     {
-        // Validate the deposit form
-//        dd($request);
         $request->validate([
             'type' => 'required',
             'amount' => 'required|numeric|min:0',
         ]);
 
-        // Get the authenticated user
         $user = Auth::user();
 
-
-        // Update wallet
         $wallet = WalletTransaction::where('user_id', $user->id)->first();
-//        dd($wallet);
+
         if ($wallet) {
             $wallet->increment('wallet_balance', $request->amount);
         } else {
@@ -40,9 +42,6 @@ class WalletTransactionController extends Controller
             $transaction->save();
         }
 
-
-
-        // Create a wallet log for the deposit
         $log = new WalletLog();
         $log->user_id = $user->id;
         $log->type = $request->type;
@@ -50,10 +49,6 @@ class WalletTransactionController extends Controller
         $log->date = now();
         $log->amount = $request->amount;
         $log->save();
-
-        // Update the user's wallet balance
-//        $user->wallet_balance += $request->amount;
-//        $user->save();
 
         return redirect()->route('crowd.wallet')->with('success', 'Deposit successful.');
     }

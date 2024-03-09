@@ -24,7 +24,7 @@
                                                 <div class="depCard">
                                                     <div>
                                                         <h3>Cash Balance</h3>
-                                                        <h4>AED 0</h4>
+                                                        <h4>AED {{ number_format($wallet->wallet_balance) }}</h4>
                                                     </div>
                                                     <div class="depButton">
                                                         <a href="{{ route('wallet') }}" class="depBtn">Deposit</a>
