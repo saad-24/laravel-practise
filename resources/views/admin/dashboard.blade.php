@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" id="price" name="price" required>
                 </div>
                 </div>
-                
+
                 <div class="form-row">
                 <div class="form-group">
                     <label for="images">Images:</label>
@@ -52,7 +52,7 @@
                 </div>
                 <!-- Add image display and update functionality if needed -->
                 <div class="form-group">
-                <button type="submit" class="btn themeBtn">Update Property</button>
+                <button type="submit" class="btn themeBtn">Add Property</button>
                 </div>
         </form>
     </div>

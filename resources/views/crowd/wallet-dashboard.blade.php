@@ -60,9 +60,17 @@
                                                                 <th>Amount</th>
                                                             </tr>
                                                         </thead>
-                                                        <!-- <tbody>
-                                                            <tr></tr>
-                                                        </tbody> -->
+                                                        <tbody>
+                                                        @foreach($wallet_logs as $item)
+                                                            <tr>
+                                                                <td>{{ $item->type }}</td>
+                                                                <td>{{ $item->status }}</td>
+                                                                <td>{{ $item->date }}</td>
+                                                                <td>N/A</td>
+                                                                <td>{{ $item->amount }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>

@@ -50,8 +50,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('edit-card');
     Route::put('/update-card/{id}', [CardController::class, 'update'])->name('update-card');
     Route::any('/delete-card/{id}', [CardController::class, 'destroy'])->name('delete-card');
-
-
     //paypal
     Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
@@ -66,21 +64,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-
-
-
     Route::get('/wallet/deposit', [WalletTransactionController::class, 'depositForm'])->name('wallet');
     Route::post('/wallet/deposit', [WalletTransactionController::class, 'deposit'])->name('wallet.deposit');
-
 });
 
-Route::middleware('admin')->group(function () {
+Route::middleware('admin')->prefix('admin')->group(function () {
     // Admin routes here
-    Route::any('/admin', [UserController::class, 'userProperties'])->name('admin.home');
-    Route::get('/admin/properties', [FrontController::class, 'properties'])->name('admin_properties');
-    Route::post('/admin/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
-    Route::get('/admin/property', [FrontController::class, 'AdminDashboard'])->name('admin.dashboard');
-    Route::get('/admin/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
-    Route::put('/admin/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');
-    Route::delete('/admin/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
+    Route::any('/', [UserController::class, 'userProperties'])->name('admin.home');
+    Route::get('/properties', [FrontController::class, 'properties'])->name('admin_properties');
+    Route::post('/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
+    Route::get('/property', [FrontController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
+    Route::put('/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');
+    Route::delete('/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
 });
