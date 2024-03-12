@@ -26,8 +26,8 @@ use App\Http\Controllers\WalletTransactionController;
 
 Route::middleware('guest')->group(function () {
     // Guest routes here
-    Route::post('/signup', [UserController::class, 'signup'])->middleware('guest');
-    Route::post('/login', [UserController::class, 'login'])->middleware('guest');
+    Route::post('/signup', [UserController::class, 'signup']);
+    Route::post('/login', [UserController::class, 'login']);
     Route::get('/signup', [FrontController::class, 'Signup'])->name('signup');
     Route::get('/login', [FrontController::class, 'Login'])->name('login');
 });
@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])->name('property_detail');
     Route::any('/properties/pay', [PaymentController::class, 'pay'])->name('properties.pay');
     // Route::get('/properties/pay', [PaymentController::class, 'index'])->name('custom');
+    Route::get('/account', [FrontController::class, 'account'])->name('front.account');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
     Route::get('/portfolio', [FrontController::class, 'Portfolio'])->name('crowd.portfolio');
@@ -66,6 +67,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/wallet/deposit', [WalletTransactionController::class, 'depositForm'])->name('wallet');
     Route::post('/wallet/deposit', [WalletTransactionController::class, 'deposit'])->name('wallet.deposit');
+
+    Route::get('/wallet/withdraw', [WalletTransactionController::class, 'withdrawForm'])->name('withdraw');
+    Route::post('/wallet/withdraw', [WalletTransactionController::class, 'withdraw'])->name('wallet.withdraw');
+    Route::any('/wallet-pay', [WalletTransactionController::class, 'withdrawCart'])->name('cart.withdraw');
+    Route::any('/wallet-error', [WalletTransactionController::class, 'withdrawError'])->name('withdraw.error');
+    Route::any('/wallet-success', [WalletTransactionController::class, 'withdrawSuccess'])->name('withdraw.success');
 });
 
 Route::middleware('admin')->prefix('admin')->group(function () {

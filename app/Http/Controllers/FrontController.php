@@ -116,5 +116,10 @@ class FrontController extends Controller
         return view('crowd.checkout');
     }
 
+    public function account()
+    {
+        $user = Auth::user();
+        return view('crowd.account-dashboard', compact('user'));
+    }
 
 }

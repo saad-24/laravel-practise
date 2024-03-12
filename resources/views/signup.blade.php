@@ -31,6 +31,10 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div>
+                <label for="account">Account Type:</label>
+                <input type="text" name="account_type" required>
+            </div>
+            <div>
                 <button type="submit">Signup</button>
             </div>
         </form>

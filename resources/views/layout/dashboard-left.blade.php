@@ -2,9 +2,15 @@
 
     <div class="dash-top">
         <div class="logo">
-            <a href="{{ route('crowd')}}">
-                <img src="{{ asset('/images/logo.png') }}" class="img-fluid" alt="">
-            </a>
+            @if(Auth::check() && Auth::user()->is_admin)
+                <a href="{{ route('admin.home')}}">
+                    <img src="{{ asset('/images/logo.png') }}" class="img-fluid" alt="">
+                </a>
+            @else
+                <a href="{{ route('front.account')}}">
+                    <img src="{{ asset('/images/logo.png') }}" class="img-fluid" alt="">
+                </a>
+            @endif
         </div>
         <div class="profile">
             <h3>LU</h3>
