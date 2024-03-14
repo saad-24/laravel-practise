@@ -17,13 +17,13 @@ class FrontController extends Controller
     public function properties()
     {
         $properties = Property::all();
-        $funded = Funded::all();
+//        $funded = Funded::all();
         if (Auth::user()->is_admin) {
             // Redirect admin user to admin.crowd route
-            return view('admin.properties', compact('properties','funded'));
+            return view('admin.properties', compact('properties'));
         } else {
             // Redirect non-admin user to crowd route
-            return view('crowd.properties', compact('properties','funded'));
+            return view('crowd.properties', compact('properties'));
         }
 
     }
@@ -120,6 +120,16 @@ class FrontController extends Controller
     {
         $user = Auth::user();
         return view('crowd.account-dashboard', compact('user'));
+    }
+
+    public function userDashboard()
+    {
+        return view('crowd.profile-dashboard');
+    }
+
+    public function preference()
+    {
+        return view('crowd.preference-dashboard');
     }
 
 }

@@ -250,6 +250,9 @@
 <script src="{{ asset('public/js/lightbox.js') }}"></script>
 <script src="{{ asset('public/js/function.js') }}"></script>
 
+
+
+
 </body>
 
 </html>

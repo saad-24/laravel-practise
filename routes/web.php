@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CurrencyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminPropertyController;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])->name('property_detail');
     Route::any('/properties/pay', [PaymentController::class, 'pay'])->name('properties.pay');
     // Route::get('/properties/pay', [PaymentController::class, 'index'])->name('custom');
+    Route::get('/profile', [FrontController::class, 'userDashboard'])->name('front.dashboard');
+    Route::get('/preference', [FrontController::class, 'preference'])->name('front.preference');
     Route::get('/account', [FrontController::class, 'account'])->name('front.account');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
@@ -51,6 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('edit-card');
     Route::put('/update-card/{id}', [CardController::class, 'update'])->name('update-card');
     Route::any('/delete-card/{id}', [CardController::class, 'destroy'])->name('delete-card');
+
+    Route::post('/set-currency', [CurrencyController::class, 'setCurrency'])->name('set.currency');
+
     //paypal
     Route::get('/create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');

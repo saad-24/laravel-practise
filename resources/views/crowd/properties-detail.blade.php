@@ -4,7 +4,11 @@
 <body class="homeBody">
 
     @include('layout.dashboard-left')
-
+    @php
+        // Retrieve the selected currency from the session
+        $selectedCurrency = session('selected_currency', 'USD');
+//        dd($selectedCurrency);// Default to USD if not set
+    @endphp
     <section class="prop-detail-banner">
         <div class="container-fluid">
             <div class="row">
@@ -520,14 +524,26 @@
                     <div class="prop-price-fixed">
                         <div class="prop-price-card">
                             <h4>Property price</h4>
-                            <h3><sub>AED</sub> {{ number_format($property->price) }}</h3>
+
+{{--                            @dd(convertPrice($property->price, $selectedCurrency));--}}
+                            <h3><sub>AED</sub> {{ convertPrice($property->price, $selectedCurrency) }}
+                            </h3>
+                            @php
+                                function convertPrice($price, $toCurrency) {
+//                                    $convertedPrice = \Akaunting\Money\Money::AED($price);
+//                                    dd($convertedPrice);
+                                    $convertedPrice = \Akaunting\Money\Money::AED($price)->convert(\Akaunting\Money\Currency::$toCurrency(), 0.21);
+//                                    dd($convertedPrice);
+                                    return $convertedPrice;
+                                }
+                            @endphp
                             <progress id="file" value="85" max="100"> 85% </progress>
 
                             <div class="funded">
                                 {{-- @dd($property) --}}
                                 @php
                                     $percentage = ($property->total_investment / $property->price) * 100;
-                        
+
                                     $percentage = min($percentage, 100);
                                 @endphp
                                 <h3>{{ number_format($percentage, 0) }}% funded</h3>
@@ -605,7 +621,7 @@
                                         aria-describedby="basic-addon1">
 
                                 </div>
-                                
+
                             </form>
                             <form action="{{ route('cart.add', $property) }}" method="POST">
                                 @csrf
@@ -622,7 +638,7 @@
                         </div>
                         @endif
                         {{-- @dd($errors) --}}
-                        
+
                         <p class="prop-para"><i class="fal fa-stars"></i> 4,987 people viewed this property</p>
                     </div>
 

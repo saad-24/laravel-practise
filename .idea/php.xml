@@ -122,6 +122,7 @@
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
       <path value="$PROJECT_DIR$/vendor/darryldecode/cart" />
       <path value="$PROJECT_DIR$/vendor/srmklive/paypal" />
+      <path value="$PROJECT_DIR$/vendor/akaunting/laravel-money" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">

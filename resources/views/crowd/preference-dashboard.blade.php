@@ -1,27 +1,13 @@
-<?php include __DIR__ . '/include/header.php'?>
-
-<body class="dashboard">
-
-
-
+@extends('layout.main')
+@section('content')
+    @include('layout.dashboard-left')
     <section class="dashboard-sect">
         <div class="container-fluid p-0">
             <div class="row m-0">
-                <div class="col-md-2 p-0">
-                    <?php include __DIR__ . '/include/dashboard-left.php'?>
+                <div class="col-md-3 p-0">
                 </div>
-                <div class="col-md-10 p-0">
+                <div class="col-md-9 p-0">
                     <div class="dashRight">
-                        <div class="drTop">
-                            <div class="lang">
-                                <a href="javascript:;"><i class="fal fa-globe"></i> EN</a>
-                            </div>
-                            <p>Complete onboarding. Local regulations require all investors to complete onboarding
-                                before they can invest.</p>
-                            <div class="dasheadBtn">
-                                <a href="javascript:;">Complete Onboarding</a>
-                            </div>
-                        </div>
                         <div class="drMedium">
                             <h2>Preferences</h2>
                         </div>
@@ -43,13 +29,7 @@
                                                                                         class="fal fa-globe"></i></span>Language</label>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <div class="form-group">
-                                                                                <select id="inputState"
-                                                                                    class="form-control">
-                                                                                    <option selected>English</option>
-                                                                                    <option>Arabic</option>
-                                                                                </select>
-                                                                            </div>
+                                                                                <div id="google_translate_element" class="menuDropdown mt-3"></div>
                                                                         </div>
                                                                     </div>
 
@@ -61,15 +41,15 @@
                                                                         </div>
                                                                         <div class="col">
                                                                             <div class="form-group">
-                                                                                <select id="inputState"
+                                                                                <select id="currencyDropdown"
                                                                                     class="form-control">
                                                                                     <option selected>ADE</option>
-                                                                                    <option>EGP</option>
-                                                                                    <option>USD</option>
-                                                                                    <option>EUR</option>
-                                                                                    <option>GBP</option>
-                                                                                    <option>SAR</option>
-                                                                                    <option>KWD</option>
+                                                                                    <option value="EGP">EGP</option>
+                                                                                    <option value="USD">USD</option>
+                                                                                    <option value="EUR">EUR</option>
+                                                                                    <option value="GBP">GBP</option>
+                                                                                    <option value="SAR">SAR</option>
+                                                                                    <option value="KWD">KWD</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -81,7 +61,7 @@
                                                                 <p>Receive newsletters, promotional offers, new property
                                                                     launch emails and more.</p>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,4 +79,4 @@
 
 
 
-    <?php include __DIR__ . '/include/footer.php'?>
+@endsection

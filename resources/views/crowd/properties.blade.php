@@ -33,6 +33,10 @@
                         <div class="tab-pane fade show active" id="available" role="tabpanel"
                             aria-labelledby="available-tab">
 
+
+
+
+
                             <div class="row">
                                 @foreach ($properties as $property)
                                     @if ($property->status === 'available')
@@ -81,18 +85,18 @@
                                                     <br>
                                                     <br>
                                                     <div class="row admin_btn">
-                                                        
-                                                            
+
+
                                                             <a href="{{ route('admin.property.edit', $property->id) }}" class="btn themeBtn">Edit</a>
                                                             <a href="{{ route('admin.property.destroy', $property->id) }}" class="btn btn-danger danger">Delete</a>
-                                                        
+
                                                     </div>
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
-                                    
+
                                 @endforeach
                             </div>
                         </div>

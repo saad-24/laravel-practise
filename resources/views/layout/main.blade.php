@@ -116,6 +116,36 @@
 <script src="{{ asset('public/js/wow.min.js') }}"></script>
 <script src="{{ asset('public/js/lightbox.js') }}"></script>
 <script src="{{ asset('public/js/function.js') }}"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'tr,en,ar'☺
+        }, 'google_translate_element');
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // Handle dropdown change event
+    var element = document.getElementById('currencyDropdown');
+    if (element) {
+        element.addEventListener('change', function() {
+            var selectedCurrency = this.value;
+
+            // Send AJAX request to set the selected currency
+            axios.post('{{ route("set.currency") }}', { currency: selectedCurrency })
+                .then(function (response) {
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.error('Error:', error.message);
+                });
+        });
+    } else {
+        console.error('Element not found:', 'currencyDropdown');
+    }
+</script>
 </body>
 
 </html>

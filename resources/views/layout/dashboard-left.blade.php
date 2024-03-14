@@ -7,15 +7,15 @@
                     <img src="{{ asset('/images/logo.png') }}" class="img-fluid" alt="">
                 </a>
             @else
-                <a href="{{ route('front.account')}}">
+                <a href="{{ route('crowd')}}">
                     <img src="{{ asset('/images/logo.png') }}" class="img-fluid" alt="">
                 </a>
             @endif
         </div>
-        <div class="profile">
+        <a class="profile" href="{{ route('front.dashboard') }}">
             <h3>LU</h3>
             <h4>{{ auth()->user()->name }}</h4>
-        </div>
+        </a>
         <ul class="dashList">
             <li><a href="{{ route('front.properties') }}">Properties</a></li>
             <li><a href="{{ route('crowd.wallet') }}">Wallet</a></li>
