@@ -524,16 +524,33 @@
                     <div class="prop-price-fixed">
                         <div class="prop-price-card">
                             <h4>Property price</h4>
-
-{{--                            @dd(convertPrice($property->price, $selectedCurrency));--}}
                             <h3><sub>AED</sub> {{ convertPrice($property->price, $selectedCurrency) }}
                             </h3>
                             @php
                                 function convertPrice($price, $toCurrency) {
-//                                    $convertedPrice = \Akaunting\Money\Money::AED($price);
-//                                    dd($convertedPrice);
-                                    $convertedPrice = \Akaunting\Money\Money::AED($price)->convert(\Akaunting\Money\Currency::$toCurrency(), 0.21);
-//                                    dd($convertedPrice);
+                                    // Define conversion rates based on target currency
+                                    if ($toCurrency === 'GBP') {
+                                        $conversionRate = 0.21;
+                                    } elseif ($toCurrency === 'USD') {
+                                        $conversionRate = 0.27;
+                                    } elseif ($toCurrency === 'SAR') {
+                                        $conversionRate = 1.02;
+                                    } elseif ($toCurrency === 'AED') {
+                                        $conversionRate = 1;
+                                    } elseif ($toCurrency === 'EUR') {
+                                        $conversionRate = 0.25;
+                                    } elseif ($toCurrency === 'KWD') {
+                                        $conversionRate = 0.084;
+                                    } elseif ($toCurrency === 'EGP') {
+                                        $conversionRate = 13.01;
+                                    } else {
+                                        // Default conversion rate if target currency is not recognized
+                                        $conversionRate = 1;
+                                    }
+
+                                    // Convert the price using the determined conversion rate
+                                    $convertedPrice = \Akaunting\Money\Money::AED($price)->convert(\Akaunting\Money\Currency::$toCurrency(), $conversionRate);
+
                                     return $convertedPrice;
                                 }
                             @endphp
