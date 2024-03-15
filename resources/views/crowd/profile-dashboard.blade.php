@@ -24,7 +24,7 @@
                                                     <div class="row mb-5">
                                                         <div class="col-md-4">
                                                             <div class="finCard finProfile">
-                                                                <a href="javascript:;">
+                                                                <a href="{{ route('front.tier') }}">
                                                                     <div>
                                                                         <span><i class="fal fa-info-square"></i></span>
                                                                         <h3>Crown Intro</h3>

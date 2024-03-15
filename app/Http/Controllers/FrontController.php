@@ -132,4 +132,9 @@ class FrontController extends Controller
         return view('crowd.preference-dashboard');
     }
 
+    public function tier()
+    {
+        return view('crowd.tier-dashboard');
+    }
+
 }

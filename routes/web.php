@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/properties/pay', [PaymentController::class, 'index'])->name('custom');
     Route::get('/profile', [FrontController::class, 'userDashboard'])->name('front.dashboard');
     Route::get('/preference', [FrontController::class, 'preference'])->name('front.preference');
+    Route::get('/tier', [FrontController::class, 'tier'])->name('front.tier');
     Route::get('/account', [FrontController::class, 'account'])->name('front.account');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
