@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [FrontController::class, 'userDashboard'])->name('front.dashboard');
     Route::get('/preference', [FrontController::class, 'preference'])->name('front.preference');
     Route::get('/tier', [FrontController::class, 'tier'])->name('front.tier');
+    Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
     Route::get('/account', [FrontController::class, 'account'])->name('front.account');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
@@ -85,8 +86,14 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin')->prefix('admin')->group(function () {
     // Admin routes here
     Route::any('/', [UserController::class, 'userProperties'])->name('admin.home');
+    Route::get('/admin-panel', [FrontController::class, 'adminPanel'])->name('admin.panel');
+    Route::get('/admin-panel/properties', [FrontController::class, 'adminProperty'])->name('admin.panel.property');
+    Route::get('/admin-panel/blog', [FrontController::class, 'adminBlog'])->name('admin.panel.blog');
+    Route::get('/admin-panel/users', [FrontController::class, 'adminUsers'])->name('admin.panel.users');
     Route::get('/properties', [FrontController::class, 'properties'])->name('admin_properties');
     Route::post('/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
+    Route::get('/blog', [AdminPropertyController::class, 'blogform'])->name('admin.blog.form');
+    Route::post('/blog', [AdminPropertyController::class, 'blogstore'])->name('admin.blog.store');
     Route::get('/property', [FrontController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
     Route::put('/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');

@@ -91,7 +91,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="finCard finProfile">
-                                                                <a href="javascript:;">
+                                                                <a href="{{route('front.blog')}}">
                                                                     <div>
                                                                         <span><i class="fal fa-poll-h"></i></span>
                                                                         <h3>Crown Blog</h3>

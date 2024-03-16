@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use App\Models\Property;
+use App\Models\Blog;
+use App\Models\BlogImage;
 use App\Models\PropertyImage;
 use App\Models\Funded;
 use Illuminate\Http\Request;
@@ -15,7 +17,6 @@ class AdminPropertyController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
-//            'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'bed' => 'required|integer',
             'bath' => 'required|integer',
@@ -35,18 +36,10 @@ class AdminPropertyController extends Controller
             'category' => $validatedData['category'],
             'status' => $validatedData['status'],
         ]);
-        // dd($property);
         if($property){
             $msg = "Property added successfully";
         }
-        
-        // if ($request->hasFile('images')) {
-        //     foreach ($request->file('images') as $image) {
-        //         $path = $image->store('property_images', 'public');
-        //         Log::info('Image stored at: ' . $path);
-        //         $property->images()->create(['image_path' => $path]);
-        //     }
-        // }
+
         if ($request->hasFile('images')) {
             // Upload and process the new profile image
             foreach ($request->file('images') as $image) {
@@ -84,14 +77,14 @@ class AdminPropertyController extends Controller
 
         $property->update($validatedData);
 
-        return redirect()->route('admin.property.dashboard')->with('success', 'Property updated successfully!');
+        return redirect()->route('admin.panel.property')->with('success', 'Property updated successfully!');
     }
 
     public function destroy(Property $property)
     {
         $property->delete();
 
-        return redirect()->route('admin.property.dashboard')->with('success', 'Property deleted successfully!');
+        return redirect()->route('admin.panel.property')->with('success', 'Property deleted successfully!');
     }
 
     public function moveToFunded(Property $property)
@@ -109,8 +102,47 @@ class AdminPropertyController extends Controller
 
     public function index()
     {
-        
+
         return route('admin.crowd');
+    }
+
+    public function blogstore(Request $request)
+    {
+        // Validate form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'content' => 'required|string',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required|string|max:255',
+        ]);
+        // dd($validatedData);
+        $msg=null;
+        // Create a new property record
+        $blog = Blog::create([
+            'blog_name' => $validatedData['name'],
+            'blog_content' => $validatedData['content'],
+            'category' => $validatedData['category'],
+        ]);
+        if($blog){
+            $msg = "Property added successfully";
+        }
+
+        if ($request->hasFile('images')) {
+            // Upload and process the new profile image
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('images/blog_images'), $imageName);
+                $blog->images()->create(['image_path' => $imageName]);
+            }
+            $msg .= ' with image';
+        }
+        // Redirect back with success message
+        return redirect()->back()->with('success', $msg.'!');
+    }
+
+    public function blogform()
+    {
+        return view('admin.add_blog');
     }
 
 }

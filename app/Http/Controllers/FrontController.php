@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Blog;
 use App\Models\Funded;
 use App\Models\Property;
 use App\Models\Investment;
 use App\Models\Cart;
 use App\Models\Card;
+use App\Models\User;
 use App\Models\WalletLog;
 use App\Models\WalletTransaction;
 use DB;
@@ -17,7 +19,6 @@ class FrontController extends Controller
     public function properties()
     {
         $properties = Property::all();
-//        $funded = Funded::all();
         if (Auth::user()->is_admin) {
             // Redirect admin user to admin.crowd route
             return view('admin.properties', compact('properties'));
@@ -27,6 +28,7 @@ class FrontController extends Controller
         }
 
     }
+
 
     public function AdminDashboard()
     {
@@ -135,6 +137,43 @@ class FrontController extends Controller
     public function tier()
     {
         return view('crowd.tier-dashboard');
+    }
+
+
+    public function blog()
+    {
+        $blogs = Blog::all();
+        if (Auth::user()->is_admin) {
+            // Redirect admin user to admin.crowd route
+            return view('admin.blog', compact('blogs'));
+        } else {
+            // Redirect non-admin user to crowd route
+            return view('crowd.blog', compact('blogs'));
+        }
+
+    }
+
+    public function adminPanel()
+    {
+        return view('admin.admin-panel');
+    }
+
+    public function adminProperty()
+    {
+        $properties = Property::all();
+        return view('admin.admin-properties', compact('properties'));
+    }
+
+    public function adminBlog()
+    {
+        $blogs = Blog::all();
+        return view('admin.admin-blog', compact('blogs'));
+    }
+
+    public function adminUsers()
+    {
+        $users = User::all();
+        return view('admin.admin-users', compact('users'));
     }
 
 }

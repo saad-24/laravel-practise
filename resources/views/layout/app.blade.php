@@ -239,16 +239,16 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="{{ asset('public/js/app.min.js') }}"></script>
+<script src="{{ asset('/js/app.min.js') }}"></script>
 <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap%404.6.1/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-<script src="{{ asset('public/js/wow.min.js') }}"></script>
-<script src="{{ asset('public/js/lightbox.js') }}"></script>
-<script src="{{ asset('public/js/function.js') }}"></script>
+<script src="{{ asset('/js/wow.min.js') }}"></script>
+<script src="{{ asset('/js/lightbox.js') }}"></script>
+<script src="{{ asset('/js/function.js') }}"></script>
 
 
 

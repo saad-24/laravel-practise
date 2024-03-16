@@ -524,8 +524,7 @@
                     <div class="prop-price-fixed">
                         <div class="prop-price-card">
                             <h4>Property price</h4>
-                            <h3><sub>AED</sub> {{ convertPrice($property->price, $selectedCurrency) }}
-                            </h3>
+                            <h3>{{ convertPrice($property->price, $selectedCurrency) }}</h3>
                             @php
                                 function convertPrice($price, $toCurrency) {
                                     // Define conversion rates based on target currency
@@ -536,7 +535,9 @@
                                     } elseif ($toCurrency === 'SAR') {
                                         $conversionRate = 1.02;
                                     } elseif ($toCurrency === 'AED') {
-                                        $conversionRate = 1;
+                                        $convertedPrice = \Akaunting\Money\Money::AED($price);
+                                        $formattedPrice = $convertedPrice->getCurrency()->getCurrency() . ' ' .$convertedPrice->getAmount();
+                                        return $formattedPrice;
                                     } elseif ($toCurrency === 'EUR') {
                                         $conversionRate = 0.25;
                                     } elseif ($toCurrency === 'KWD') {
@@ -544,13 +545,9 @@
                                     } elseif ($toCurrency === 'EGP') {
                                         $conversionRate = 13.01;
                                     } else {
-                                        // Default conversion rate if target currency is not recognized
                                         $conversionRate = 1;
                                     }
-
-                                    // Convert the price using the determined conversion rate
                                     $convertedPrice = \Akaunting\Money\Money::AED($price)->convert(\Akaunting\Money\Currency::$toCurrency(), $conversionRate);
-
                                     return $convertedPrice;
                                 }
                             @endphp
@@ -615,31 +612,31 @@
                                 </table>
                             </div>
                             @if(Auth::check() && !Auth::user()->is_admin)
-                            <form>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><svg width="32" height="32"
-                                                viewBox="0 0 66 66" fill="none">
-                                                <path fill="#5B9D3B"
-                                                    d="M63.15405,21.6983C58.70056,9.06049,46.66138,0,32.5,0c-3.37939,0-6.63782,0.5166-9.70184,1.47375V21.6983H63.15405z">
-                                                </path>
-                                                <path fill="#FFFFFF"
-                                                    d="M22.79816,21.6983v21.68567h40.32806C64.33588,39.98053,65,36.31842,65,32.5c0-3.7879-0.65472-7.42133-1.84595-10.8017H22.79816z">
-                                                </path>
-                                                <path fill="#121C30"
-                                                    d="M22.79816,63.52625C25.86218,64.4834,29.12061,65,32.5,65c14.13086,0,26.14966-9.02087,30.62622-21.61603H22.79816V63.52625z">
-                                                </path>
-                                                <path fill="#B81942"
-                                                    d="M22.79816,21.6983V1.47375C9.58795,5.60034,0,17.93011,0,32.5s9.58795,26.89966,22.79816,31.02625V43.38397V21.6983z">
-                                                </path>
-                                            </svg> AED</span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="2,000" aria-label="Username"
-                                        aria-describedby="basic-addon1">
+{{--                            <form>--}}
+{{--                                <div class="input-group mb-3">--}}
+{{--                                    <div class="input-group-prepend">--}}
+{{--                                        <span class="input-group-text" id="basic-addon1"><svg width="32" height="32"--}}
+{{--                                                viewBox="0 0 66 66" fill="none">--}}
+{{--                                                <path fill="#5B9D3B"--}}
+{{--                                                    d="M63.15405,21.6983C58.70056,9.06049,46.66138,0,32.5,0c-3.37939,0-6.63782,0.5166-9.70184,1.47375V21.6983H63.15405z">--}}
+{{--                                                </path>--}}
+{{--                                                <path fill="#FFFFFF"--}}
+{{--                                                    d="M22.79816,21.6983v21.68567h40.32806C64.33588,39.98053,65,36.31842,65,32.5c0-3.7879-0.65472-7.42133-1.84595-10.8017H22.79816z">--}}
+{{--                                                </path>--}}
+{{--                                                <path fill="#121C30"--}}
+{{--                                                    d="M22.79816,63.52625C25.86218,64.4834,29.12061,65,32.5,65c14.13086,0,26.14966-9.02087,30.62622-21.61603H22.79816V63.52625z">--}}
+{{--                                                </path>--}}
+{{--                                                <path fill="#B81942"--}}
+{{--                                                    d="M22.79816,21.6983V1.47375C9.58795,5.60034,0,17.93011,0,32.5s9.58795,26.89966,22.79816,31.02625V43.38397V21.6983z">--}}
+{{--                                                </path>--}}
+{{--                                            </svg> AED</span>--}}
+{{--                                    </div>--}}
+{{--                                    <input type="text" class="form-control" placeholder="2,000" aria-label="Username"--}}
+{{--                                        aria-describedby="basic-addon1">--}}
 
-                                </div>
+{{--                                </div>--}}
 
-                            </form>
+{{--                            </form>--}}
                             <form action="{{ route('cart.add', $property) }}" method="POST">
                                 @csrf
                                 <input type="text" class="form-control" placeholder="2,000" name="price"
@@ -654,8 +651,6 @@
                             <p class="prop-para">You won't be charged yet</p>
                         </div>
                         @endif
-                        {{-- @dd($errors) --}}
-
                         <p class="prop-para"><i class="fal fa-stars"></i> 4,987 people viewed this property</p>
                     </div>
 

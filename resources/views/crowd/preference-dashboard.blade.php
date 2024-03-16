@@ -43,7 +43,8 @@
                                                                             <div class="form-group">
                                                                                 <select id="currencyDropdown"
                                                                                     class="form-control">
-                                                                                    <option selected>ADE</option>
+                                                                                    <option selected>Select Currency</option>
+                                                                                    <option value="AED">AED</option>
                                                                                     <option value="EGP">EGP</option>
                                                                                     <option value="USD">USD</option>
                                                                                     <option value="EUR">EUR</option>
