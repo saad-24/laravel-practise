@@ -16,16 +16,15 @@
             <li><a href="{{ route('admin.panel.users') }}">Users</a></li>
             <li><a href="{{ route('admin.panel.property') }}">Properties</a></li>
             <li><a href="{{ route('admin.panel.blog') }}">Blogs</a></li>
-            <li><a href="{{ route('crowd.rewards') }}">Rewards</a></li>
-            <li><a href="{{ route('crowd.cart') }}">Cart</a></li>
+            <li><a href="{{ route('admin.panel.wallet') }}">Wallet</a></li>
+            <li><a href="{{ route('admin.panel.ownership') }}">Ownership</a></li>
         </ul>
     </div>
     <div class="dash-bottom">
-        <a href="javascript:;" class="boardHelp">Health & Support</a>
         <div class="store">
             <ul>
-                <li><a href="javascript:;"><img src="assets/images/apstore.png" class="img-fluid" alt=""></a></li>
-                <li><a href="javascript:;"><img src="assets/images/playstore.png" class="img-fluid" alt=""></a></li>
+                <li><a href="javascript:;"><img src="{{ asset('/images/apstore.png') }}" class="img-fluid" alt=""></a></li>
+                <li><a href="javascript:;"><img src="{{ asset('/images/playstore.png') }}" class="img-fluid" alt=""></a></li>
             </ul>
         </div>
     </div>

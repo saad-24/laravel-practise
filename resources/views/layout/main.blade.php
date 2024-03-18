@@ -85,8 +85,8 @@
                     <div class="col-md-4">
                         <div class="footList">
                             <ul class="footTab">
-                                <li><a href="javascript:;">Privacy Policy</a></li>
-                                <li><a href="javascript:;">Terms & Condition</a></li>
+                                <li><a href="{{ route('crowd.policy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('crowd.terms') }}">Terms & Condition</a></li>
                             </ul>
                         </div>
                     </div>
@@ -116,6 +116,17 @@
 <script src="{{ asset('public/js/wow.min.js') }}"></script>
 <script src="{{ asset('public/js/lightbox.js') }}"></script>
 <script src="{{ asset('public/js/function.js') }}"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
     function googleTranslateElementInit() {

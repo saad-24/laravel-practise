@@ -1,9 +1,6 @@
-<?php include __DIR__ . '/include/header.php'?>
+@extends('layout.app')
 
-<body class="homeBody">
-
-    <?php include __DIR__ . '/include/menu.php'?>
-
+@section('content')
     <section class="propBanner termBanner">
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -61,4 +58,4 @@
         </div>
     </section>
 
-    <?php include __DIR__ . '/include/footer.php'?>
+@endsection

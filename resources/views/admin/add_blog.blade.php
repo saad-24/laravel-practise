@@ -5,17 +5,14 @@
         <h2>Add New Blog</h2>
         <form method="POST" action="{{ route('admin.blog.store') }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Blog Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="content">Blog Content:</label>
-                    <input type="text" class="form-control" name="content" required>
-                </div>
+            <div class="form-group">
+                <label for="name">Blog Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
-
+            <div class="form-group">
+                <label for="content">Blog Content:</label>
+                <textarea name="content" id="editor"></textarea>
+            </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="images">Images:</label>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CurrencyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -36,6 +37,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     // Auth routes here
     Route::any('/', [UserController::class, 'userProperties'])->name('crowd');
+    Route::get('/terms-and-conditions', [FrontController::class, 'termsconditions'])->name('crowd.terms');
+    Route::get('/privacy-policy', [FrontController::class, 'privacypolicy'])->name('crowd.policy');
+    Route::get('/sell-property', [FrontController::class, 'sellproperty'])->name('crowd.sell');
     Route::get('/property_detail/{id}', [PropertyDetailController::class, 'show'])->name('property_detail');
     Route::any('/properties/pay', [PaymentController::class, 'pay'])->name('properties.pay');
     // Route::get('/properties/pay', [PaymentController::class, 'index'])->name('custom');
@@ -90,10 +94,19 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/admin-panel/properties', [FrontController::class, 'adminProperty'])->name('admin.panel.property');
     Route::get('/admin-panel/blog', [FrontController::class, 'adminBlog'])->name('admin.panel.blog');
     Route::get('/admin-panel/users', [FrontController::class, 'adminUsers'])->name('admin.panel.users');
+    Route::get('/admin-panel/wallet', [FrontController::class, 'adminWallet'])->name('admin.panel.wallet');
+    Route::get('/admin-panel/ownership', [FrontController::class, 'adminOwnership'])->name('admin.panel.ownership');
     Route::get('/properties', [FrontController::class, 'properties'])->name('admin_properties');
     Route::post('/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
+
+    //blog
     Route::get('/blog', [AdminPropertyController::class, 'blogform'])->name('admin.blog.form');
     Route::post('/blog', [AdminPropertyController::class, 'blogstore'])->name('admin.blog.store');
+    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+    Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+
+
+    //property
     Route::get('/property', [FrontController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
     Route::put('/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');

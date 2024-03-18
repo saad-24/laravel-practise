@@ -102,7 +102,10 @@ figure {
   font-weight: 700;
 }
 
-
+.wallet-text {
+    color: var(--secondary);
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
 
 .themeBtn:hover {
   color: #131313;

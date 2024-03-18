@@ -12,8 +12,10 @@
 
         </div>
         <div class="col-md-10" style="padding-left: 75px;">
+            <h1 class="wallet-text text-center font-weight-bolder">Property Details</h1>
+            <br>
             <table class="table">
-                <thead style="background: linear-gradient(180deg, #d7960a, #b68911);color: white;">
+                <thead style="background-color: #f8f8f8;">
                 <tr>
                     <th scope="col">Property ID</th>
                     <th scope="col">Property Name</th>

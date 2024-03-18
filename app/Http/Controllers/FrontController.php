@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Funded;
+use App\Models\Ownership;
 use App\Models\Property;
 use App\Models\Investment;
 use App\Models\Cart;
@@ -153,6 +154,22 @@ class FrontController extends Controller
 
     }
 
+    public function termsconditions()
+    {
+        return view('crowd.terms-and-conditions');
+    }
+
+    public function privacypolicy()
+    {
+        return view('crowd.privacy-policy');
+    }
+
+    public function sellproperty()
+    {
+        return view('crowd.sell-us-property');
+    }
+
+
     public function adminPanel()
     {
         return view('admin.admin-panel');
@@ -174,6 +191,19 @@ class FrontController extends Controller
     {
         $users = User::all();
         return view('admin.admin-users', compact('users'));
+    }
+
+    public function adminWallet()
+    {
+        $wallet = WalletTransaction::all();
+        $wallet_logs = WalletLog::all();
+        return view('admin.admin-wallet', compact('wallet', 'wallet_logs'));
+    }
+
+    public function adminOwnership()
+    {
+        $ownerships = Ownership::all();
+        return view('admin.admin-ownerships', compact('ownerships'));
     }
 
 }

@@ -12,8 +12,10 @@
 
         </div>
         <div class="col-md-10" style="padding-left: 75px;">
+            <h1 class="wallet-text text-center font-weight-bolder">Blogs</h1>
+            <br>
             <table class="table">
-                <thead style="background: linear-gradient(180deg, #d7960a, #b68911);color: white;">
+                <thead style="background-color: #f8f8f8;">
                 <tr>
                     <th scope="col">Blog ID</th>
                     <th scope="col">Blog Name</th>
@@ -30,8 +32,8 @@
                         <td>{{ $blog->blog_content }}</td>
                         <td>{{ $blog->category }}</td>
                         <td>
-                            <a href="" class="btn themeBtn">Edit</a>
-                            <a href="" class="btn btn-danger danger">Delete</a>
+                            <a href="{{ route('blogs.edit', $blog) }}" class="btn themeBtn">Edit</a>
+{{--                            <a href="{{ route('blogs.edit', $blog) }}">Edit</a>--}}
                         </td>
                     </tr>
                 @endforeach

@@ -1,12 +1,9 @@
-<?php include __DIR__ . '/include/header.php'?>
+@extends('layout.app')
 
-<body class="homeBody">
-
-    <?php include __DIR__ . '/include/menu.php'?>
-
+@section('content')
     <section class="aboutBanner sellpropBanner">
-        <img src="assets/images/about-elm.png" class="img-fluid about-elm" alt="">
-        <img src="assets/images/divider.png" class="img-fluid divider" alt="">
+        <img src="{{ asset('/images/about-elm.png') }}" class="img-fluid about-elm" alt="">
+        <img src="{{ asset('/images/divider.png') }}" class="img-fluid divider" alt="">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-12 text-center">
@@ -21,44 +18,44 @@
                         <div class="logo-slider">
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-1.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-1.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
 
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-2.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-2.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-3.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-3.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-4.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-4.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-5.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-5.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-6.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-6.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
 
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-5.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-5.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                             <div class="logos">
                                 <figure>
-                                    <img src="assets/images/logos/lg-6.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/logos/lg-6.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                         </div>
@@ -70,7 +67,7 @@
 
 
     <section class="paycash-sect">
-        <img src="assets/images/cashElm.png" class="img-fluid cashElm" alt="">
+        <img src="{{ asset('/images/cashElm.png') }}" class="img-fluid cashElm" alt="">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -87,7 +84,7 @@
                 </div>
                 <div class="col-md-6">
                     <figure>
-                        <img src="assets/images/cashImg.png" class="img-fluid w-100" alt="">
+                        <img src="{{ asset('/images/cashImg.png') }}" class="img-fluid w-100" alt="">
                     </figure>
                 </div>
             </div>
@@ -111,7 +108,7 @@
                 <div class="col-md-3">
                     <div class="bestCard">
                         <figure>
-                            <img src="assets/images/hw-1.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/hw-1.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>Quick offer</h3>
                         <p>Upload your property details
@@ -124,7 +121,7 @@
                 <div class="col-md-3">
                     <div class="bestCard">
                         <figure>
-                            <img src="assets/images/hw-2.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/hw-2.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>Due diligence</h3>
                         <p>We’ll manage any necessary
@@ -137,7 +134,7 @@
                 <div class="col-md-3">
                     <div class="bestCard">
                         <figure>
-                            <img src="assets/images/hw-3.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/hw-3.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>Quick sale</h3>
                         <p>Your property will be listed
@@ -149,7 +146,7 @@
                 <div class="col-md-3">
                     <div class="bestCard">
                         <figure>
-                            <img src="assets/images/hw-4.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/hw-4.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>Easy close</h3>
                         <p>Sale proceeds will be
@@ -179,7 +176,7 @@
                 <div class="col-md-5">
                     <div class="bestCard bestsellCard">
                         <figure>
-                            <img src="assets/images/ws-1.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/ws-1.png') }}" class="img-fluid" alt="">
                         </figure>
                         <div>
                             <h3>Quick offer</h3>
@@ -194,7 +191,7 @@
                 <div class="col-md-5">
                     <div class="bestCard bestsellCard">
                         <figure>
-                            <img src="assets/images/ws-2.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/ws-2.png') }}" class="img-fluid" alt="">
                         </figure>
                         <div>
                             <h3>Due diligence</h3>
@@ -209,7 +206,7 @@
                 <div class="col-md-5">
                     <div class="bestCard bestsellCard">
                         <figure>
-                            <img src="assets/images/ws-3.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/ws-3.png') }}" class="img-fluid" alt="">
                         </figure>
                         <div>
                             <h3>Quick sale</h3>
@@ -223,7 +220,7 @@
                 <div class="col-md-5">
                     <div class="bestCard bestsellCard">
                         <figure>
-                            <img src="assets/images/ws-4.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/ws-4.png') }}" class="img-fluid" alt="">
                         </figure>
                         <div>
                             <h3>Easy close</h3>
@@ -260,7 +257,7 @@
                             </div>
                             <div class="col-md-6 text-center">
                                 <figure>
-                                    <img src="assets/images/smPhone.png" class="img-fluid" alt="">
+                                    <img src="{{ asset('/images/smPhone.png') }}" class="img-fluid" alt="">
                                 </figure>
                             </div>
                         </div>
@@ -287,7 +284,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-1.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-1.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -296,7 +293,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-2.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-2.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -304,7 +301,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-3.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-3.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -312,7 +309,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-4.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-4.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -320,7 +317,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-5.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-5.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -328,7 +325,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-6.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-6.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -336,7 +333,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-7.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-7.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -344,7 +341,7 @@
                 <div class="col-md-3">
                     <div class="neigCont">
                         <figure>
-                            <img src="assets/images/neighbours/ng-8.png" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('/images/neighbours/ng-8.png') }}" class="img-fluid w-100" alt="">
                         </figure>
                         <h3>Dubai Marina</h3>
                     </div>
@@ -506,5 +503,4 @@
         </div>
     </section>
 
-    <?php include __DIR__ . '/include/contact-section.php'?>
-    <?php include __DIR__ . '/include/footer.php'?>
+@endsection

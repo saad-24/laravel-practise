@@ -28,8 +28,8 @@
         <a href="javascript:;" class="boardHelp">Health & Support</a>
         <div class="store">
             <ul>
-                <li><a href="javascript:;"><img src="assets/images/apstore.png" class="img-fluid" alt=""></a></li>
-                <li><a href="javascript:;"><img src="assets/images/playstore.png" class="img-fluid" alt=""></a></li>
+                <li><a href="javascript:;"><img src="{{ asset('/images/apstore.png') }}" class="img-fluid" alt=""></a></li>
+                <li><a href="javascript:;"><img src="{{ asset('/images/playstore.png') }}" class="img-fluid" alt=""></a></li>
             </ul>
         </div>
     </div>
