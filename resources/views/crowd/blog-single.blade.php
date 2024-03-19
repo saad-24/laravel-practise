@@ -1,10 +1,6 @@
-<?php include __DIR__ . '/include/header.php'?>
-
-<body class="homeBody">
-
-    <?php include __DIR__ . '/include/menu.php'?>
-
-    <section class="blog-single-banner">
+@extends('layout.app')
+@section('content')
+    <section class="blog-single-banner" style="background-image: url('{{ asset('images/blog_images/' . $blog->images->first()->image_path) }}')">
         <div class="overlay"></div>
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -12,12 +8,12 @@
                     <div class="blg-single-cont">
                         <ul class="top-list">
                             <li><a href="javascript:;">Learn with Crown</a></li>
-                            <li><a href="javascript:;">Real estate investing</a></li>
+                            <li><a href="javascript:;">{{ $blog->category }}</a></li>
                         </ul>
-                        <h2>Real Estate 101: What’s in it for Beginners?</h2>
+                        <h2>{{ $blog->blog_name }}</h2>
                         <div class="banner-bottom">
                             <ul class="bottom-list">
-                                <li><span>January 11, 2023</span></li>
+                                <li><span>{{ $blog->created_at->format('F d, Y') }}</span></li>
                                 <li><span>6 min read</span></li>
                             </ul>
                             <ul class="banner-icon-list">
@@ -41,9 +37,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Learn with Stake</a></li>
-                            <li class="breadcrumb-item"><a href="#">Real estate investing</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Real Estate 101: What’s in it for
-                                Beginners?</li>
+                            <li class="breadcrumb-item"><a href="#">{{ $blog->category }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $blog->blog_name }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -52,24 +47,11 @@
                 <div class="col-md-8">
                     <div class="blg-sing-cont">
                         <h3>Introduction</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempore in corporis
-                            perspiciatis, impedit temporibus reprehenderit tempora alias ex labore fuga ad ipsa officia
-                            iure necessitatibus dicta deleniti earum totam. Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Consectetur tempore in corporis
-                            perspiciatis, impedit temporibus reprehenderit tempora alias ex labore fuga ad ipsa officia
-                            iure necessitatibus dicta deleniti earum totam.</p>
-
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempore in corporis
-                            perspiciatis, impedit temporibus reprehenderit tempora alias ex labore fuga ad ipsa officia
-                            iure necessitatibus dicta deleniti earum totam. Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Consectetur tempore in corporis
-                            perspiciatis, impedit temporibus reprehenderit tempora alias ex labore fuga ad ipsa officia
-                            iure necessitatibus dicta deleniti earum totam.</p>
-
+                        <p>{{ $blog->blog_content }}</p>
 
 
                         <h3>Why Real Estate (for real though)...</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempore in corporis
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempore in corporis
                             perspiciatis, impedit temporibus reprehenderit tempora alias ex labore fuga ad ipsa officia
                             iure necessitatibus dicta deleniti earum totam. Lorem ipsum dolor sit amet consectetur
                             adipisicing elit. Consectetur tempore in corporis
@@ -276,4 +258,4 @@
     </section>
 
 
-    <?php include __DIR__ . '/include/footer.php'?>
+@endsection

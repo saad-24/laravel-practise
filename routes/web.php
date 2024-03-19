@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/preference', [FrontController::class, 'preference'])->name('front.preference');
     Route::get('/tier', [FrontController::class, 'tier'])->name('front.tier');
     Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
+    Route::get('/blog/{blog}/detail', [BlogController::class, 'blogDetail'])->name('blog.detail');
     Route::get('/account', [FrontController::class, 'account'])->name('front.account');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
@@ -104,6 +105,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::post('/blog', [AdminPropertyController::class, 'blogstore'])->name('admin.blog.store');
     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
     Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+    Route::any('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
 
 
     //property

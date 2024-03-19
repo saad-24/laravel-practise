@@ -117,11 +117,14 @@ class AdminPropertyController extends Controller
             'category' => 'required|string|max:255',
         ]);
         // dd($validatedData);
+
+        $blogContent = strip_tags($request->input('content'));
+
         $msg=null;
         // Create a new property record
         $blog = Blog::create([
             'blog_name' => $validatedData['name'],
-            'blog_content' => $validatedData['content'],
+            'blog_content' => $blogContent,
             'category' => $validatedData['category'],
         ]);
         if($blog){
@@ -141,37 +144,7 @@ class AdminPropertyController extends Controller
         return redirect()->back()->with('success', $msg.'!');
     }
 
-    public function updateblog(Request $request, Blog $blog)
-    {
-//        dd($request->all());
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'content' => 'required|string',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category' => 'required|string|max:255',
-        ]);
 
-
-//        $blog = Blog::find($blog->id);
-        $blog->update($validatedData);
-        dd($blog->toArray());
-        dd($blog);
-        if ($request->hasFile('images')) {
-            // Upload and process the new profile image
-            foreach ($request->file('images') as $image) {
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('images/blog_images'), $imageName);
-                $blog->images()->create(['image_path' => $imageName]);
-            }
-        }
-        return redirect()->route('admin.panel.blog')->with('success', 'Blog updated successfully!');
-    }
-
-    public function editBlog(Blog $blog)
-    {
-//        dd($blog);
-        return view('admin.edit_blog', compact('blog'));
-    }
 
     public function blogform()
     {

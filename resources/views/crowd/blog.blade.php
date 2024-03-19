@@ -36,7 +36,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <a href="javascript:;" class="themeBtn btnPosition">Read Post</a>
+                                                <a href="{{ route('blog.detail', $blog) }}" class="themeBtn btnPosition">Read Post</a>
                                             </div>
                                         </div>
                                     </figure>

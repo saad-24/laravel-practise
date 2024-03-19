@@ -33,7 +33,7 @@
                         <td>{{ $blog->category }}</td>
                         <td>
                             <a href="{{ route('blogs.edit', $blog) }}" class="btn themeBtn">Edit</a>
-{{--                            <a href="{{ route('blogs.edit', $blog) }}">Edit</a>--}}
+                            <a href="{{ route('blogs.destroy', $blog) }}" class="btn btn-danger danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach

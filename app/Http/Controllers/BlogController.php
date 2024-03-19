@@ -12,6 +12,11 @@ class BlogController extends Controller
         return view('admin.edit_blog', compact('blog'));
     }
 
+    public function blogDetail(Blog $blog)
+    {
+        return view('crowd.blog-single', compact('blog'));
+    }
+
     public function update(Request $request, Blog $blog)
     {
         $request->validate([
@@ -33,5 +38,14 @@ class BlogController extends Controller
 
         return redirect()->route('admin.panel.blog', $blog)->with('success', 'Blog updated successfully.');
     }
+
+    public function destroy(Blog $blog)
+    {
+        // Delete the blog record
+        $blog->delete();
+
+        return redirect()->route('admin.panel.blog')->with('success', 'Blog deleted successfully.');
+    }
+
 
 }

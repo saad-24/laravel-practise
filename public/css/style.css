@@ -3099,7 +3099,7 @@ a.boardHelp {
   min-height: 80vh;
   display: flex;
   align-items: end;
-  background-image: url(../images/blog-banner.jpg);
+  /*background-image: url(../images/blog-banner.jpg);*/
   background-position: center;
   background-size: cover;
 }
