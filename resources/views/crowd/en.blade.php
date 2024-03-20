@@ -1,9 +1,6 @@
-<?php include __DIR__ . '/include/header.php'?>
+@extends('layout.app')
 
-<body class="homeBody">
-
-    <?php include __DIR__ . '/include/menu.php'?>
-
+@section('content')
     <section class="propBanner enBanner">
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -25,7 +22,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -39,7 +36,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -53,7 +50,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -67,7 +64,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -81,7 +78,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -95,7 +92,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -109,7 +106,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -123,7 +120,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -139,7 +136,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -153,7 +150,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -167,7 +164,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -181,7 +178,7 @@
                 <div class="col-md-3">
                     <div class="abc-card">
                         <figure>
-                            <img src="assets/images/abc.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/abc.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h3>About Crowd</h3>
                         <p>
@@ -198,7 +195,4 @@
         </div>
     </section>
 
-
-
-    <?php include __DIR__ . '/include/contact-section.php'?>
-    <?php include __DIR__ . '/include/footer.php'?>
+@endsection

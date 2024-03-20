@@ -251,7 +251,17 @@
                                     diversifying your portfolio.
                                 </p>
                                 <div class="head-btn">
-                                    <a href="javascript:;" class="headBtn">Login</a>
+                                    @auth
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf <!-- CSRF Token -->
+                                            <button class="headBtn" type="submit">Logout</button>
+                                        </form>
+                                    @else
+                                        <form method="POST" action="{{ route('login') }}">
+                                            @csrf <!-- CSRF Token -->
+                                            <button class="headBtn" type="submit">Login</button>
+                                        </form>
+                                    @endauth
                                     <a href="javascript:;" class="themeBtn">Get Started</a>
                                 </div>
                             </div>

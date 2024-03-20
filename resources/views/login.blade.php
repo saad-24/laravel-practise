@@ -26,10 +26,10 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <button type="submit" class="btn themeBtn">Login</button>
-                <a href="{{ route('signup') }}" class="btn themeBtn">Signup</a>
+                <a href="{{ route('crowd.register') }}" class="btn themeBtn">Signup</a>
             </form>
-            
-            
+
+
 
         </div>
     </section>

@@ -154,6 +154,31 @@ class FrontController extends Controller
 
     }
 
+    public function en()
+    {
+        return view('crowd.en');
+    }
+
+    public function registertest()
+    {
+        return view('signup-step1');
+    }
+
+    public function registertest2()
+    {
+        return view('signup-step2');
+    }
+
+    public function registertest3()
+    {
+        return view('signup-step3');
+    }
+
+    public function registertest4()
+    {
+        return view('signup-step4');
+    }
+
 
     public function termsconditions()
     {
@@ -205,6 +230,13 @@ class FrontController extends Controller
     {
         $ownerships = Ownership::all();
         return view('admin.admin-ownerships', compact('ownerships'));
+    }
+
+    public function adminInvestment()
+    {
+//        $investments = Investment::all();
+        $investments = Investment::paginate(10);
+        return view('admin.admin-investments', compact('investments'));
     }
 
 }

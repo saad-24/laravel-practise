@@ -23,6 +23,7 @@
                     <th scope="col">Bed</th>
                     <th scope="col">Bath</th>
                     <th scope="col">Area</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Options</th>
                 </tr>
                 </thead>
@@ -35,6 +36,7 @@
                         <td>{{ $property->bed }}</td>
                         <td>{{ $property->bath }}</td>
                         <td>{{ $property->area }}</td>
+                        <td>{{ $property->status }}</td>
                         <td>
                             <a href="{{ route('admin.property.edit', $property->id) }}" class="btn themeBtn">Edit</a>
                             <a href="{{ route('admin.property.destroy', $property->id) }}" class="btn btn-danger danger">Delete</a>

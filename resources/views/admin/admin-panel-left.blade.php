@@ -9,13 +9,15 @@
             @endif
         </div>
         <a class="profile" href="{{ route('front.dashboard') }}">
-            <h3>LU</h3>
+            <h3>{{ substr(auth()->user()->name, 0, 2) }}</h3>
             <h4>{{ auth()->user()->name }}</h4>
         </a>
         <ul class="dashList">
             <li><a href="{{ route('admin.panel.users') }}">Users</a></li>
             <li><a href="{{ route('admin.panel.property') }}">Properties</a></li>
+            <li><a href="{{ route('admin.panel.investment') }}">Investments</a></li>
             <li><a href="{{ route('admin.panel.blog') }}">Blogs</a></li>
+            <li><a href="{{ route('admin.panel.blog-comments') }}">Blog Comments</a></li>
             <li><a href="{{ route('admin.panel.wallet') }}">Wallet</a></li>
             <li><a href="{{ route('admin.panel.ownership') }}">Ownership</a></li>
         </ul>

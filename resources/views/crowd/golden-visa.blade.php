@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="aboutBanner">
-    <img src="/public/images/about-elm.png" class="img-fluid about-elm" alt="">
+    <img src="{{ asset('/images/about-elm.png') }}" class="img-fluid about-elm" alt="">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-12 text-center">
@@ -62,7 +62,7 @@
             <div class="col-md-12">
                 <div class="vid-Cont">
                     <figure>
-                        <img src="/public/images/vidImg.png" class="img-fluid w-100" alt="">
+                        <img src="{{ asset('/images/vidImg.png') }}" class="img-fluid w-100" alt="">
                         <div class="overlay">
                             <a href="javascript:;" class="vidBtn"><i class="fas fa-play"></i></a>
                         </div>
@@ -90,7 +90,7 @@
             <div class="col-md-3">
                 <div class="passCont">
                     <figure>
-                        <img src="/public/images/dot.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/dot.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Secure a long-term residency</h3>
                     <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -100,7 +100,7 @@
             <div class="col-md-3">
                 <div class="passCont">
                     <figure>
-                        <img src="/public/images/dot.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/dot.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Bring the whole family</h3>
                     <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -110,7 +110,7 @@
             <div class="col-md-3">
                 <div class="passCont">
                     <figure>
-                        <img src="/public/images/dot.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/dot.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Travel freely</h3>
                     <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -123,7 +123,7 @@
             <div class="col-md-3">
                 <div class="passCont">
                     <figure>
-                        <img src="/public/images/dot.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/dot.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Access thriving Global Markets</h3>
                     <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -133,7 +133,7 @@
             <div class="col-md-3">
                 <div class="passCont">
                     <figure>
-                        <img src="/public/images/dot.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/dot.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Health and education for all</h3>
                     <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -143,7 +143,7 @@
             <div class="col-md-3">
                 <div class="passCont">
                     <figure>
-                        <img src="/public/images/dot.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/dot.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Enhanced safety and security</h3>
                     <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -175,7 +175,7 @@
                 <div class="wayContent">
                     <div class="wayimg">
                         <figure>
-                            <img src="/public/images/img-1.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/img-1.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h2>Enhanced safety and security</h2>
                         <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -184,7 +184,7 @@
 
                     <div class="wayimg">
                         <figure>
-                            <img src="/public/images/img-2.png" class="img-fluid" alt="">
+                            <img src="{{ asset('/images/img-2.png') }}" class="img-fluid" alt="">
                         </figure>
                         <h2>Hassle-free Investing</h2>
                         <p>Get a 10-year renewable residency permit, allowing you to live and work without the hassle of
@@ -245,14 +245,25 @@
                             <p>Invest in Dubai's real estate market globally, securing long-term UAE residency while
                                 diversifying your portfolio.
                             </p>
+
                             <div class="head-btn">
-                                <a href="javascript:;" class="headBtn">Login</a>
+                                @auth
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf <!-- CSRF Token -->
+                                        <button class="headBtn" type="submit">Logout</button>
+                                    </form>
+                                @else
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf <!-- CSRF Token -->
+                                        <button class="headBtn" type="submit">Login</button>
+                                    </form>
+                                @endauth
                                 <a href="javascript:;" class="themeBtn">Get Started</a>
                             </div>
                         </div>
                         <div class="col-md-6 text-center">
                             <figure>
-                                <img src="/public/images/smPhone.png" class="img-fluid" alt="">
+                                <img src="{{ asset('/images/smPhone.png') }}" class="img-fluid" alt="">
                             </figure>
                         </div>
                     </div>
@@ -279,7 +290,7 @@
             <div class="col-md-3">
                 <div class="invCard">
                     <figure>
-                        <img src="/public/images/inv-1.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/inv-1.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Invest in real estate from
                         only AED 500</h3>
@@ -289,7 +300,7 @@
             <div class="col-md-3">
                 <div class="invCard">
                     <figure>
-                        <img src="/public/images/inv-1.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/inv-1.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Digital and diversified real
                         estate investing</h3>
@@ -299,7 +310,7 @@
             <div class="col-md-3">
                 <div class="invCard">
                     <figure>
-                        <img src="/public/images/inv-1.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/inv-1.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Hassle-free ownership</h3>
                     <p>With fractionalised properties there is no mortgage or large down payments required</p>
@@ -308,7 +319,7 @@
             <div class="col-md-3">
                 <div class="invCard">
                     <figure>
-                        <img src="/public/images/inv-1.png" class="img-fluid" alt="">
+                        <img src="{{ asset('/images/inv-1.png') }}" class="img-fluid" alt="">
                     </figure>
                     <h3>Trusted entity with real
                         estate expertise</h3>

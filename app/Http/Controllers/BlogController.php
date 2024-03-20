@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\BlogComment;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,7 +15,15 @@ class BlogController extends Controller
 
     public function blogDetail(Blog $blog)
     {
+        $blog->load('comments.user');
+        $blog->loadCount('comments');
         return view('crowd.blog-single', compact('blog'));
+    }
+
+    public function adminBlogComment()
+    {
+        $blog_comments = BlogComment::all();
+        return view('admin.admin-blog-comments', compact('blog_comments'));
     }
 
     public function update(Request $request, Blog $blog)

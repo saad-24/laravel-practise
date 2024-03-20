@@ -13,7 +13,7 @@
             @endif
         </div>
         <a class="profile" href="{{ route('front.dashboard') }}">
-            <h3>LU</h3>
+            <h3>{{ substr(auth()->user()->name, 0, 2) }}</h3>
             <h4>{{ auth()->user()->name }}</h4>
         </a>
         <ul class="dashList">

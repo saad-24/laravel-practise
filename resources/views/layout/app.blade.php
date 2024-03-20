@@ -43,7 +43,7 @@
                 <div class="col-md-12">
                     <div class="navigation">
                         <nav class="navbar navbar-expand-lg navbar-light ">
-                            <a class="navbar-brand" href="#"><img src="{{ asset('/images/logo.png') }}" class="img-fluid"
+                            <a class="navbar-brand" href="{{ route('crowd') }}"><img src="{{ asset('/images/logo.png') }}" class="img-fluid"
                                                                   alt=""></a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -89,7 +89,7 @@
                             </div>
                         </nav>
                         <ul class="lang">
-                            <li><a href="javascript:;"><i class="fal fa-globe"></i> EN</a></li>
+                            <li><a href="{{ route('crowd.en') }}"><i class="fal fa-globe"></i> EN</a></li>
                         </ul>
                         <div class="head-btn">
                             @auth

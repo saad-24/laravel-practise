@@ -408,13 +408,15 @@
         </div>
 
         <div class="row">
-            @foreach ($properties as $property)
+            @foreach ($properties->take(3) as $property)
             <div class="col-md-4">
                 <div class="howCard howCardNew">
                     <div class="hwcHead">
+                        @foreach ($property->images->take(1) as $image)
                         <figure>
-                            <img src="{{ asset('/images/mon-1.png') }}" class="img-fluid w-100" alt="">
+                            <img src="{{ url('images/property_images/' . $image->image_path) }}" class="img-fluid w-100" alt="">
                         </figure>
+                        @endforeach
                     </div>
                     <div class="hwcBody">
                         <a href="{{ route('property_detail', ['id' => $property->id]) }}"><h2>{{ $property->name }}</h2></a>

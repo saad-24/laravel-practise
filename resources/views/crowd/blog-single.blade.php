@@ -66,7 +66,7 @@
                             iure necessitatibus dicta deleniti earum totam.</p>
 
 
-                        <h4>Ready to invest in real estate? <span><a href="javascript:;">Click here</a></span></h4>
+                        <h4>Ready to invest in real estate? <span><a href="{{ route('front.properties') }}">Click here</a></span></h4>
 
                         <div class="blg-links">
                             <h4>Share this:</h4>
@@ -85,10 +85,11 @@
 
                         <div class="leave-reply">
                             <h2>Leave a Reply</h2>
-                            <form>
+                            <form action="{{ route('blog.comment.store', $blog) }}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Write a comment"></textarea>
+                                        placeholder="Write a comment" name="comment"></textarea>
                                     <button type="submit" class="btn themeBtn">Comment</button>
                                 </div>
                             </form>
@@ -97,46 +98,32 @@
 
 
                         <div class="new-replies">
-                            <h5>7 replies on “Real Estate 101: What’s in it for Beginners?”</h5>
+                            <h5>{{ $blog->comments_count }} replies on “{{ $blog->blog_name }}”</h5>
+{{--                            @dd($blog_comments);--}}
+                            @foreach($blog->comments as $comment)
                             <div class="comment">
                                 <figure>
                                     <img src="assets/images/avatar.png" class="img-fluid" alt="">
                                 </figure>
 
                                 <div>
-                                    <h6>Abdulla M. Al Khoori</h6>
+{{--                                    @php--}}
+{{--                                        $user = \App\Models\User::find($comments->user_id);--}}
+{{--                                    @endphp--}}
+                                    <h6>{{ $comment->user->name }}</h6>
                                     <ul>
-                                        <li><a href="javascript:;">July 8, 2023 at 8:01 pm</a></li>
+                                        <li><a href="javascript:;">{{ $comment->created_at->format('F j, Y \a\t g:i a') }}</a></li>
                                         <li><a href="javascript:;">Reply</a></li>
                                     </ul>
-                                    <p>In case I want to withdraw the parietal of my investment any fees associated? If
-                                        I
-                                        want to close my account with a stake any penalty associated?</p>
+                                    <p>{{ $comment->comment }}</p>
 
                                     <a href="javascript:;"><span><i class="fas fa-star"></i></span> Like</a>
                                 </div>
 
                             </div>
+                            @endforeach
 
-                            <div class="comment">
-                                <figure>
-                                    <img src="assets/images/avatar.png" class="img-fluid" alt="">
-                                </figure>
 
-                                <div>
-                                    <h6>Abdulla M. Al Khoori</h6>
-                                    <ul>
-                                        <li><a href="javascript:;">July 8, 2023 at 8:01 pm</a></li>
-                                        <li><a href="javascript:;">Reply</a></li>
-                                    </ul>
-                                    <p>In case I want to withdraw the parietal of my investment any fees associated? If
-                                        I
-                                        want to close my account with a stake any penalty associated?</p>
-
-                                    <a href="javascript:;"><span><i class="fas fa-star"></i></span> Like</a>
-                                </div>
-
-                            </div>
                         </div>
 
                     </div>
