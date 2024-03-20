@@ -70,5 +70,5 @@
 
 
 
-    <?php include __DIR__ . '/include/contact-section.php'?>
+    <?php include __DIR__ . '/include/contact-section.blade.php'?>
     <?php include __DIR__ . '/include/footer.php'?>

@@ -1,5 +1,5 @@
 <section class="contact-sect">
-    <img src="assets/images/cntImg.png" class="img-fluid cntImg" alt="">
+    <img src="{{ asset('/images/cntImg.png') }}" class="img-fluid cntImg" alt="">
     <div class="container">
         <div class="row">
             <div class="col-md-6">

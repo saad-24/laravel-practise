@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogCommentController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
     Route::get('/blog/{blog}/detail', [BlogController::class, 'blogDetail'])->name('blog.detail');
     Route::post('/blogs/{blog}/comment', [BlogCommentController::class, 'store'])->name('blog.comment.store');
+    Route::post('/contact', [ContactController::class, 'store'])->name('blog.contact.store');
     Route::get('/account', [FrontController::class, 'account'])->name('front.account');
     Route::get('/properties', [FrontController::class, 'properties'])->name('front.properties');
     Route::get('/rewards', [FrontController::class, 'Rewards'])->name('crowd.rewards');
@@ -104,6 +106,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/admin-panel/properties', [FrontController::class, 'adminProperty'])->name('admin.panel.property');
     Route::get('/admin-panel/blog', [FrontController::class, 'adminBlog'])->name('admin.panel.blog');
     Route::get('/admin-panel/blog-comments', [BlogController::class, 'adminBlogComment'])->name('admin.panel.blog-comments');
+    Route::get('/admin-panel/queries', [FrontController::class, 'adminQueries'])->name('admin.panel.queries');
     Route::any('/comments/{comment}', [BlogCommentController::class, 'destroy'])->name('comments.destroy');
     Route::get('/admin-panel/users', [FrontController::class, 'adminUsers'])->name('admin.panel.users');
     Route::get('/admin-panel/wallet', [FrontController::class, 'adminWallet'])->name('admin.panel.wallet');
@@ -124,4 +127,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
     Route::put('/properties/{property}', [AdminPropertyController::class, 'update'])->name('admin.property.update');
     Route::delete('/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
+
+
+    Route::get('/contacts/{contact}/respond', [ContactController::class, 'showResponseForm'])->name('contacts.respond');
+    Route::post('/contacts/{contact}/respond', [ContactController::class, 'respond'])->name('contacts.storeResponse');
+
+
+
 });

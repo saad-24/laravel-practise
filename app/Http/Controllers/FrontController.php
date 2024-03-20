@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Models\Funded;
 use App\Models\Ownership;
 use App\Models\Property;
@@ -237,6 +238,12 @@ class FrontController extends Controller
 //        $investments = Investment::all();
         $investments = Investment::paginate(10);
         return view('admin.admin-investments', compact('investments'));
+    }
+
+    public function adminQueries()
+    {
+        $queries = Contact::all();
+        return view('admin.admin-contact', compact('queries'));
     }
 
 }

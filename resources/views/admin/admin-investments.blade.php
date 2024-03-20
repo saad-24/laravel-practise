@@ -9,7 +9,6 @@
     </div>
     <div class="row">
         <div class="col-md-2">
-
         </div>
         <div class="col-md-10" style="padding-left: 75px;">
             <h1 class="wallet-text text-center font-weight-bolder">Investment Details</h1>

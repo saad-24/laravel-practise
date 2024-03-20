@@ -20,6 +20,7 @@
             <li><a href="{{ route('admin.panel.blog-comments') }}">Blog Comments</a></li>
             <li><a href="{{ route('admin.panel.wallet') }}">Wallet</a></li>
             <li><a href="{{ route('admin.panel.ownership') }}">Ownership</a></li>
+            <li><a href="{{ route('admin.panel.queries') }}">Customer Queries</a></li>
         </ul>
     </div>
     <div class="dash-bottom">
