@@ -46,6 +46,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     // Auth routes here
     Route::any('/', [UserController::class, 'userProperties'])->name('crowd');
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/terms-and-conditions', [FrontController::class, 'termsconditions'])->name('crowd.terms');
     Route::get('/en', [FrontController::class, 'en'])->name('crowd.en');
     Route::get('/privacy-policy', [FrontController::class, 'privacypolicy'])->name('crowd.policy');
@@ -68,11 +69,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('crowd.cart');
     Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
     Route::get('/wallet', [FrontController::class, 'Wallet'])->name('crowd.wallet');
+    Route::get('/about', [FrontController::class, 'About'])->name('crowd.about');
+    Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //card
     Route::get('/add_card', [FrontController::class, 'addCard'])->name('crowd.card');
     Route::post('/save-card', [CardController::class, 'saveCard'])->name('save-card');
     Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('edit-card');
     Route::put('/update-card/{id}', [CardController::class, 'update'])->name('update-card');
     Route::any('/delete-card/{id}', [CardController::class, 'destroy'])->name('delete-card');
+
+    //currency
     Route::post('/set-currency', [CurrencyController::class, 'setCurrency'])->name('set.currency');
 
     //paypal
@@ -85,13 +93,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/charge', [StripeController::class, 'index'])->name('stripe');
     Route::post('/charge', [StripeController::class, 'charge'])->name('stripe-payment');
 
-    Route::get('/about', [FrontController::class, 'About'])->name('crowd.about');
-    Route::get('/golden_visa', [FrontController::class, 'Golden'])->name('crowd.golden_visa');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    //wallet
     Route::get('/wallet/deposit', [WalletTransactionController::class, 'depositForm'])->name('wallet');
     Route::post('/wallet/deposit', [WalletTransactionController::class, 'deposit'])->name('wallet.deposit');
-
     Route::get('/wallet/withdraw', [WalletTransactionController::class, 'withdrawForm'])->name('withdraw');
     Route::post('/wallet/withdraw', [WalletTransactionController::class, 'withdraw'])->name('wallet.withdraw');
     Route::any('/wallet-pay', [WalletTransactionController::class, 'withdrawCart'])->name('cart.withdraw');
@@ -101,17 +105,20 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     // Admin routes here
-//    Route::any('/', [UserController::class, 'userProperties'])->name('admin.home');
+
+    // Admin Panel
     Route::any('/admin-panel', [FrontController::class, 'adminPanel'])->name('admin.home');
     Route::get('/admin-panel/properties', [FrontController::class, 'adminProperty'])->name('admin.panel.property');
     Route::get('/admin-panel/blog', [FrontController::class, 'adminBlog'])->name('admin.panel.blog');
     Route::get('/admin-panel/blog-comments', [BlogController::class, 'adminBlogComment'])->name('admin.panel.blog-comments');
     Route::get('/admin-panel/queries', [FrontController::class, 'adminQueries'])->name('admin.panel.queries');
-    Route::any('/comments/{comment}', [BlogCommentController::class, 'destroy'])->name('comments.destroy');
     Route::get('/admin-panel/users', [FrontController::class, 'adminUsers'])->name('admin.panel.users');
     Route::get('/admin-panel/wallet', [FrontController::class, 'adminWallet'])->name('admin.panel.wallet');
     Route::get('/admin-panel/ownership', [FrontController::class, 'adminOwnership'])->name('admin.panel.ownership');
     Route::get('/admin-panel/investment', [FrontController::class, 'adminInvestment'])->name('admin.panel.investment');
+
+
+    // Crowd
     Route::get('/properties', [FrontController::class, 'properties'])->name('admin_properties');
     Route::post('/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');
 
@@ -121,7 +128,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
     Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
     Route::any('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
-
+    Route::any('/comments/{comment}', [BlogCommentController::class, 'destroy'])->name('comments.destroy');
     //property
     Route::get('/property', [FrontController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('admin.property.edit');
@@ -129,8 +136,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::delete('/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('admin.property.destroy');
 
 
-    Route::get('/contacts/{contact}/respond', [ContactController::class, 'showResponseForm'])->name('contacts.respond');
-    Route::post('/contacts/{contact}/respond', [ContactController::class, 'respond'])->name('contacts.storeResponse');
+
 
 
 
