@@ -56,6 +56,24 @@
                     <input name="address_latitude" id="address-latitude" />
                     <input name="address_longitude" id="address-longitude" />
                 </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="annualized_return">Annualized Return:</label>
+                        <input type="text" class="form-control" name="annualized_return" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="annual_appreciation">Annual Appreciation:</label>
+                        <input type="text" class="form-control" name="annual_appreciation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projected_gross_yield">Projected Gross Yield:</label>
+                        <input type="text" class="form-control" name="projected_gross_yield" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projected_net_yield">Projected Net Yield:</label>
+                        <input type="text" class="form-control" name="projected_net_yield" required>
+                    </div>
+                </div>
                 <!-- Add image display and update functionality if needed -->
                 <div class="form-group">
                 <button type="submit" class="btn themeBtn">Add Property</button>

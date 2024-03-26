@@ -39,6 +39,10 @@ class AdminPropertyController extends Controller
             'address_address' => $request['address_address'],
             'address_latitude' => $request['address_latitude'],
             'address_longitude' => $request['address_longitude'],
+            'annualised_return' => $request['annualized_return'],
+            'annual_appreciation' => $request['annual_appreciation'],
+            'projected_gross_yield' => $request['projected_gross_yield'],
+            'projected_net_yield' => $request['projected_net_yield'],
         ]);
 
         if($property){

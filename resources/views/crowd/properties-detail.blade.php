@@ -39,7 +39,7 @@
                             <li><span>{{ $property->bed }} bed</span></li>
                             <li><span>{{ $property->bath }} bath</span></li>
                             <li><span>{{ $property->area }} sq.ft</span></li>
-                            <li><span>Dubai Marina</span></li>
+                            <li><span>{{ $property->address_address }}</span></li>
                         </ul>
 
                         <ul class="icon-list">
@@ -585,7 +585,7 @@
                                             <p>Annualised return</p>
                                         </td>
                                         <td>
-                                            <p><span>9.73%</span></p>
+                                            <p><span>{{ $property->annualised_return }}</span></p>
                                         </td>
                                     </tr>
 
@@ -594,7 +594,7 @@
                                             <p>Annual appreciation</p>
                                         </td>
                                         <td>
-                                            <p><span>6%</span></p>
+                                            <p><span>{{ $property->annual_appreciation }}</span></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -602,7 +602,7 @@
                                             <p>Projected gross yield</p>
                                         </td>
                                         <td>
-                                            <p><span>7.32%</span></p>
+                                            <p><span>{{ $property->projected_gross_yield }}</span></p>
                                         </td>
                                     </tr>
 
@@ -611,7 +611,7 @@
                                             <p>Projected net yield</p>
                                         </td>
                                         <td>
-                                            <p><span>5.75%</span></p>
+                                            <p><span>{{ $property->projected_net_yield }}</span></p>
                                         </td>
                                     </tr>
                                 </table>

@@ -21,6 +21,10 @@ class Property extends Model
         'address_address',
         'address_latitude',
         'address_longitude',
+        'annualised_return',
+        'annual_appreciation',
+        'projected_gross_yield',
+        'projected_net_yield',
     ];
 
     public function images()
