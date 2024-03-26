@@ -50,6 +50,12 @@
                     </select>
                 </div>
                 </div>
+                <div class="form-group">
+                    <label for="address_address">Address</label>
+                    <input type="text" id="address-input" name="address_address" class="form-control map-input">
+                    <input name="address_latitude" id="address-latitude" />
+                    <input name="address_longitude" id="address-longitude" />
+                </div>
                 <!-- Add image display and update functionality if needed -->
                 <div class="form-group">
                 <button type="submit" class="btn themeBtn">Add Property</button>

@@ -14,6 +14,7 @@ class AdminPropertyController extends Controller
     public function store(Request $request)
     {
         // Validate form data
+//        dd($request['address_address']);
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
@@ -35,7 +36,11 @@ class AdminPropertyController extends Controller
             'area' => $validatedData['area'],
             'category' => $validatedData['category'],
             'status' => $validatedData['status'],
+            'address_address' => $request['address_address'],
+            'address_latitude' => $request['address_latitude'],
+            'address_longitude' => $request['address_longitude'],
         ]);
+
         if($property){
             $msg = "Property added successfully";
         }

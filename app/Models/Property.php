@@ -18,6 +18,9 @@ class Property extends Model
         'area',
         'category',
         'status',
+        'address_address',
+        'address_latitude',
+        'address_longitude',
     ];
 
     public function images()

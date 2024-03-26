@@ -445,10 +445,15 @@
                         <div class="location">
                             <h2 class="newHeading">Location</h2>
                             <a href="javascript:;"><i class="fal fa-map-marker-alt"></i> 1 Bedroom in Burj Khalifa</a>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14440.714613798018!2d55.2743764!3d25.197197!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e0!3m2!1sen!2s!4v1708013953285!5m2!1sen!2s"
-                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+{{--                            <iframe--}}
+{{--                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14440.714613798018!2d55.2743764!3d25.197197!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e0!3m2!1sen!2s!4v1708013953285!5m2!1sen!2s"--}}
+{{--                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"--}}
+{{--                                referrerpolicy="no-referrer-when-downgrade"></iframe>--}}
+{{--                            <div id="address-map-container" style="width:100%;height:400px; ">--}}
+{{--                                <div style="width: 100%; height: 100%" id="address-map"></div>--}}
+{{--                            </div>--}}
+                            <div id="map" style="height: 400px;"></div>
+
                             <p>Dubai Marina is one of the premier neighbourhoods in Dubai. This impressive community
                                 boasts luxury skyscrapers, a range of dining and entertainment options and urban
                                 waterfront living to its residents. It is the most popular area for renting luxury
@@ -658,4 +663,23 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function initMap() {
+            const property = @json($property);
+            // console.log(property);
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: { lat: property.address_latitude, lng: property.address_longitude },
+            });
+
+            const marker = new google.maps.Marker({
+                position: { lat: property.address_latitude, lng: property.address_longitude },
+                map: map,
+                title: property.address_address,
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYvOXB3SFyyeR0usVOgnLyoDiAd2XDunU&callback=initMap" async defer></script>
 @endsection

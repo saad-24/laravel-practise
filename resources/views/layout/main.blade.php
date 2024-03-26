@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('/css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/responsive.css') }}" />
-
+{{--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYvOXB3SFyyeR0usVOgnLyoDiAd2XDunU&libraries=places&callback=initialize" async defer></script>--}}
     <title>Crowd</title>
 </head>
 
@@ -157,6 +157,7 @@
         console.error('Element not found:', 'currencyDropdown');
     }
 </script>
+{{--<script src="{{ asset('/js/mapInput.js') }}"></script>--}}
 </body>
 
 </html>
