@@ -25,7 +25,8 @@ class AdminPropertyController extends Controller
             'category' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'property_overview' => 'required|string',
-            'amenities.*' => 'nullable|string|max:255'
+            'amenities.*' => 'nullable|string|max:255',
+            'documents.*' => 'file|max:2048'
         ]);
         // dd($validatedData);
 
@@ -68,6 +69,15 @@ class AdminPropertyController extends Controller
                 $property->images()->create(['image_path' => $imageName]);
             }
             $msg .= ' with image';
+        }
+
+        if ($request->hasFile('documents')) {
+            // Upload and process the new profile image
+            foreach ($request->file('documents') as $document) {
+                $documentName = time() . '_' . $document->getClientOriginalName();
+                $document->move(public_path('documents/property_documents'), $documentName);
+                $property->documents()->create(['name'=>$documentName ,'path' => $documentName]);
+            }
         }
         // Redirect back with success message
         return redirect()->back()->with('success', $msg.'!');

@@ -37,6 +37,12 @@ class Property extends Model
     {
         return $this->hasMany(PropertyAmenities::class);
     }
+
+    public function documents()
+    {
+        return $this->hasMany(PropertyDocuments::class);
+    }
+
     public function investments()
     {
         return $this->hasMany(Investment::class);

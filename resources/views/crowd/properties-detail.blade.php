@@ -469,30 +469,12 @@
                         <div class="documents">
                             <h2 class="newHeading">Documents</h2>
                             <ul>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span><i class="fas fa-file"></i> Initial Valuation - Marina Quays West,
-                                            2908</span>
-                                        <span><i class="fal fa-arrow-square-down"></i></span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:;">
-                                        <span><i class="fas fa-file"></i> Initial Valuation - Marina Quays West,
-                                            2908</span>
-                                        <span><i class="fal fa-arrow-square-down"></i></span>
-                                    </a>
-                                </li>
-
-
-                                <li>
-                                    <a href="javascript:;">
-                                        <span><i class="fas fa-file"></i> Initial Valuation - Marina Quays West,
-                                            2908</span>
-                                        <span><i class="fal fa-arrow-square-down"></i></span>
-                                    </a>
-                                </li>
+                                @foreach ($property->documents as $document)
+                                    <li>
+{{--                                        src="{{ url('images/property_images/' . $image->image_path) }}"--}}
+                                        <a href="{{ url('documents/property_documents/' . $document->name) }}" download>{{ $document->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
 

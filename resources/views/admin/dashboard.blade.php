@@ -84,6 +84,12 @@
                         <button type="button" class="add-amenity">Add Amenity</button>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="document">Document:</label>
+                        <input type="file" class="form-control-file" id="document" name="documents[]" accept="image/*" multiple required>
+                    </div>
+                </div>
                 <!-- Add image display and update functionality if needed -->
                 <div class="form-group">
                 <button type="submit" class="btn themeBtn">Add Property</button>
