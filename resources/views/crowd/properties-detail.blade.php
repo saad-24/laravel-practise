@@ -293,13 +293,7 @@
                         </div>
                         <div class="overview">
                             <h2 class="newHeading">Property Overview</h2>
-                            <p>Stake is offering an opportunity to invest in a 1-bedroom apartment in Marina Quays West,
-                                Dubai Marina.</p>
-
-                            <p>Dubai Marina is a bustling hub of activity and a popular destination for locals and
-                                tourists alike. The Marina boasts a stunning array of skyscrapers and top-notch dining
-                                and entertainment options. The towers are set around a water canal with luxury yachts
-                                berthed there, creating a picturesque setting for dwellers to enjoy. </p>
+                            <p>{{ $property->property_overview }}</p>
                         </div>
                         <div class="financial">
 
@@ -585,7 +579,7 @@
                                             <p>Annualised return</p>
                                         </td>
                                         <td>
-                                            <p><span>{{ $property->annualised_return }}</span></p>
+                                            <p><span>{{ $property->annualised_return }}%</span></p>
                                         </td>
                                     </tr>
 
@@ -594,7 +588,7 @@
                                             <p>Annual appreciation</p>
                                         </td>
                                         <td>
-                                            <p><span>{{ $property->annual_appreciation }}</span></p>
+                                            <p><span>{{ $property->annual_appreciation }}%</span></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -602,7 +596,7 @@
                                             <p>Projected gross yield</p>
                                         </td>
                                         <td>
-                                            <p><span>{{ $property->projected_gross_yield }}</span></p>
+                                            <p><span>{{ $property->projected_gross_yield }}%</span></p>
                                         </td>
                                     </tr>
 
@@ -611,7 +605,7 @@
                                             <p>Projected net yield</p>
                                         </td>
                                         <td>
-                                            <p><span>{{ $property->projected_net_yield }}</span></p>
+                                            <p><span>{{ $property->projected_net_yield }}%</span></p>
                                         </td>
                                     </tr>
                                 </table>

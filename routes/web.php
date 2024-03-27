@@ -116,7 +116,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/admin-panel/wallet', [FrontController::class, 'adminWallet'])->name('admin.panel.wallet');
     Route::get('/admin-panel/ownership', [FrontController::class, 'adminOwnership'])->name('admin.panel.ownership');
     Route::get('/admin-panel/investment', [FrontController::class, 'adminInvestment'])->name('admin.panel.investment');
-    
+    Route::get('/contacts/{contact}/respond', [ContactController::class, 'showResponseForm'])->name('contacts.respond');
+    Route::post('/contacts/{contact}/respond', [ContactController::class, 'storeResponse'])->name('contacts.storeResponse');
+
     // Crowd
     Route::get('/properties', [FrontController::class, 'properties'])->name('admin_properties');
     Route::post('/property', [AdminPropertyController::class, 'store'])->name('admin.property.store');

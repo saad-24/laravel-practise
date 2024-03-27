@@ -47,5 +47,20 @@ class ContactController extends Controller
         return view('admin.response_form', compact('contact'));
     }
 
+    public function storeResponse(Request $request, Contact $contact)
+    {
+        $request->validate([
+            'response' => 'required|string',
+        ]);
+
+        // Update the contact record with the admin's response
+        $contact->response = $request->input('response');
+        $contact->save();
+
+        // Optionally, send an email to the user with the response
+
+        return redirect()->route('admin.dashboard')->with('success', 'Response sent successfully.');
+    }
+
 
 }

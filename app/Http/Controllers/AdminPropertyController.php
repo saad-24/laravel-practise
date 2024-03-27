@@ -14,7 +14,7 @@ class AdminPropertyController extends Controller
     public function store(Request $request)
     {
         // Validate form data
-//        dd($request['address_address']);
+//        dd($request['property_overview']);
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
@@ -24,8 +24,11 @@ class AdminPropertyController extends Controller
             'area' => 'required|numeric',
             'category' => 'required|string|max:255',
             'status' => 'required|string|max:255',
+            'property_overview' => 'required|string',
         ]);
         // dd($validatedData);
+
+        $propertyOverview = strip_tags($validatedData['property_overview']);
         $msg=null;
         // Create a new property record
         $property = Property::create([
@@ -43,6 +46,7 @@ class AdminPropertyController extends Controller
             'annual_appreciation' => $request['annual_appreciation'],
             'projected_gross_yield' => $request['projected_gross_yield'],
             'projected_net_yield' => $request['projected_net_yield'],
+            'property_overview' => $propertyOverview,
         ]);
 
         if($property){

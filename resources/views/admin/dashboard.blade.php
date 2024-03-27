@@ -74,6 +74,10 @@
                         <input type="text" class="form-control" name="projected_net_yield" required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="content">Property Overview:</label>
+                    <textarea name="property_overview" id="editor"></textarea>
+                </div>
                 <!-- Add image display and update functionality if needed -->
                 <div class="form-group">
                 <button type="submit" class="btn themeBtn">Add Property</button>

@@ -25,6 +25,7 @@ class Property extends Model
         'annual_appreciation',
         'projected_gross_yield',
         'projected_net_yield',
+        'property_overview',
     ];
 
     public function images()
