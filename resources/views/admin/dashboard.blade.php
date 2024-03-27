@@ -78,10 +78,39 @@
                     <label for="content">Property Overview:</label>
                     <textarea name="property_overview" id="editor"></textarea>
                 </div>
+                <div id="amenities">
+                    <div class="amenity">
+                        <input type="text" name="amenities[]" placeholder="Amenity">
+                        <button type="button" class="add-amenity">Add Amenity</button>
+                    </div>
+                </div>
                 <!-- Add image display and update functionality if needed -->
                 <div class="form-group">
                 <button type="submit" class="btn themeBtn">Add Property</button>
                 </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const amenitiesContainer = document.getElementById('amenities');
+            const addAmenityButton = document.querySelector('.add-amenity');
+
+            addAmenityButton.addEventListener('click', function() {
+                const newAmenityField = document.createElement('div');
+                newAmenityField.classList.add('amenity');
+                newAmenityField.innerHTML = `
+                <input type="text" name="amenities[]" placeholder="Amenity">
+                <button type="button" class="remove-amenity">Remove</button>
+            `;
+                amenitiesContainer.appendChild(newAmenityField);
+            });
+
+            amenitiesContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-amenity')) {
+                    event.target.closest('.amenity').remove();
+                }
+            });
+        });
+    </script>
 @endsection

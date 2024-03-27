@@ -67,15 +67,15 @@
                                                     </div>
                                                     <ul>
                                                         <li>
-                                                            <p>9%</p>
+                                                            <p>{{ $property->projected_gross_yield }}%</p>
                                                             <span>gross yield</span>
                                                         </li>
                                                         <li>
-                                                            <p>31%</p>
+                                                            <p>{{ $property->annual_appreciation }}%</p>
                                                             <span>capital appreciation</span>
                                                         </li>
                                                         <li>
-                                                            <p>52%</p>
+                                                            <p>{{ $property->annualised_return }}%</p>
                                                             <span>total ROI</span>
                                                         </li>
                                                     </ul>

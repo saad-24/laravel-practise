@@ -459,8 +459,9 @@
                         <div class="amenities">
                             <h2 class="newHeading">Amenities</h2>
                             <ul>
-                                <li><i class="far fa-dumbbell"></i>Gym</li>
-                                <li><i class="fal fa-swimming-pool"></i>Pool</li>
+                                @foreach($property->amenities as $amenity)
+                                    <li>{{ $amenity->amenities }}</li>
+                                @endforeach
                             </ul>
                         </div>
 

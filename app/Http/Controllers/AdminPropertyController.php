@@ -25,6 +25,7 @@ class AdminPropertyController extends Controller
             'category' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'property_overview' => 'required|string',
+            'amenities.*' => 'nullable|string|max:255'
         ]);
         // dd($validatedData);
 
@@ -48,6 +49,12 @@ class AdminPropertyController extends Controller
             'projected_net_yield' => $request['projected_net_yield'],
             'property_overview' => $propertyOverview,
         ]);
+
+        foreach ($validatedData['amenities'] as $amenity) {
+            if ($amenity !== null) {
+                $property->amenities()->create(['amenities' => $amenity]);
+            }
+        }
 
         if($property){
             $msg = "Property added successfully";
